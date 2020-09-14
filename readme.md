@@ -8,8 +8,8 @@
 - [泛型函数的实现](code/genericVector.cpp)
 
 ### Study Note
-- [<Essential C++> Chapter 1](./Essential-chapter1.md)
+- [<Essential C++> Chapter 1](./doc/Essential-chapter1.md)
 
-- [<Essential C++> Chapter 2](./Essential-chapter2.md)
+- [<Essential C++> Chapter 2](./doc/Essential-chapter2.md)
 
-- [<Essential C++> Chapter 3](./Essential-chapter3.md)
+- [<Essential C++> Chapter 3](./doc/Essential-chapter3.md)
