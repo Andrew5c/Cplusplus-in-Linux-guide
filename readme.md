@@ -5,7 +5,7 @@
 
 
 ### Code test in <Essential C++>
-- [泛型函数的实现](code/genericVector)
+- [泛型函数的实现](code/genericVector.cpp)
 
 ### Study Note
 - [<Essential C++> Chapter 1](./Essential-chapter1.md)
