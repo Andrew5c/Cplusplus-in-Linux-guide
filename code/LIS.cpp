@@ -9,6 +9,8 @@
 */
 #include <iostream>
 #include<vector>
+#include<string>
+
 
 using namespace std;
 
@@ -31,7 +33,8 @@ int LIS(const vector<int> &vec, int len)
 int main(){
     int arr[] = {5, 3, 4, 8, 6, 7, 8};
     vector<int> A(arr, arr+(sizeof(arr)/sizeof(arr[0])));
-
+    
+    vector<int> B(arr, arr+(sizeof(arr)/sizeof(arr[0])));
     cout << LIS(A, A.size()) << endl;
     return 0;
 }
