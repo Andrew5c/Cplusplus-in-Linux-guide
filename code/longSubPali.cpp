@@ -20,10 +20,9 @@ string longestPalindrome(string s)
     // 记录最长回文子串的起始位置
     int start = 0;
     int maxLen = 1;
-    string ans;
     // 二维数组存放每一种组合的结果
     vector<vector<bool>> dp(len, vector<bool>(len));
-    // j表示子串的左边界，i右边界
+
     for(int j=1; j<len; j++){
         for(int i=0; i<j; i++){
             if(s[i] != s[j]){
@@ -34,24 +33,21 @@ string longestPalindrome(string s)
                 else
                     dp[i][j] = dp[i+1][j-1];
             }
-            if(dp[i][j] && (j-i+1>maxLen)){
+            if(dp[i][j] && j-i+1>maxLen){
                 maxLen = j-i+1;
                 start = i;
             }
         }
     }
-    // ans = s.substr(start, start+maxLen);
-    int p=0;
-    for(int k=start; k<k+maxLen; k++){
-        ans[p] = s[k];
-        p++;
-    }
+    // 调试了那么久，才发现原来是对这个库函数的使用错误
+    // substr函数截取第一个参数开始的位置，一共第二个参数长度的字符串
+    static string ans = s.substr(start, maxLen);
     return ans;
 }
 
 
 int main(){
-    string s = "dfsdabcecbaqian";
+    string s = "cbbd";
     string ans = longestPalindrome(s);
     cout << ans << endl;
 

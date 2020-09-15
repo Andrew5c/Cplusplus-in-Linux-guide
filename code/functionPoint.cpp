@@ -3,7 +3,7 @@
 * All rights reserved.
 * Author : Andrew Q.
 * Date : 2020-09-12-08.17.20
-* Description : 函数指针使用联系
+* Description : 函数指针使用
 */
 #include<iostream>
 #include<vector>
