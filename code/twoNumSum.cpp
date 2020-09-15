@@ -5,7 +5,7 @@ using namespace std;
 class Solution
 {
 public:
-    // 暴力求解
+    // 鏆村姏瑙ｆ硶
     vector<int> twoSum(vector<int>& nums, int target){
         int i,j;
         for(i=0; i<nums.size()-1; i++){
