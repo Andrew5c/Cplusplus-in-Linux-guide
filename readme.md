@@ -1,7 +1,5 @@
 # My Codeing Practice Wiki
 
-使用远程测试。。。。
-
 Talk is cheap, show me the code...
 
 ### Problem in Leedcode
