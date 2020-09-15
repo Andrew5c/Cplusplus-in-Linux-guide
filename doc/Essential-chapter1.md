@@ -1,5 +1,3 @@
-[parent](../)
-
 # 《Essential c++》——第一章
 c++编程基础
 
