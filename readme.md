@@ -18,7 +18,7 @@ Talk is cheap, show me the code...
 - [泛型函数的实现](code/genericVector.cpp)
 - [使用泛型算法](code/useAlgorithm.cpp)
 
-### Study Note
+### <Essential C++> study note
 
 Just a note for myself, concise, no detail...
 
@@ -26,3 +26,7 @@ Just a note for myself, concise, no detail...
 - [<Essential C++> Chapter 2](./doc/Essential-chapter2.md)
 - [<Essential C++> Chapter 3](./doc/Essential-chapter3.md)
 - [<Essential C++> Chapter 4](./doc/Essential-chapter4.md)
+
+
+### Use git
+- 使用总结
