@@ -1,6 +1,6 @@
 # My Codeing Practice Wiki
 
-Talk is cheap, show me the code...
+> Talk is cheap, show me the code...
 
 ### Problem in Leetcode
 - [直接循环求两数之和](code/twoNumSum.cpp)
@@ -8,8 +8,10 @@ Talk is cheap, show me the code...
 - [整数反转（取值法）](code/reverseINT.cpp)
 - [判断回文数（对称取值）](code/ispali.cpp)
 - [两数相加（链表实现），输出正序逆序链表](code/singleListNode.cpp)
+- [罗马数字转整数](code/roma2Int.cpp)
 - [DP-最长回文子串](code/longSubPali.cpp)
 - [DP-最长非降子序列LIS问题](code/LIS.cpp)
+
 
 ### Code test in <Essential C++>
 - [函数参数传递方式&模板函数实现冒泡排序](code/callFunction.cpp)
@@ -22,7 +24,7 @@ Talk is cheap, show me the code...
 
 ### <Essential C++> study note
 
-Just a note for myself, concise, no detail...
+> Just a note for myself, concise, no detail...
 
 - [<Essential C++> Chapter 1](./doc/Essential-chapter1.md)
 - [<Essential C++> Chapter 2](./doc/Essential-chapter2.md)
