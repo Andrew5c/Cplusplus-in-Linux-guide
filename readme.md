@@ -9,6 +9,7 @@
 - [判断回文数（对称取值）](code/ispali.cpp)
 - [两数相加（链表实现），输出正序逆序链表](code/singleListNode.cpp)
 - [罗马数字转整数](code/roma2Int.cpp)
+- [最长公共前缀（表格法）](code/longestPrefix.cpp)
 - [DP-最长回文子串](code/longSubPali.cpp)
 - [DP-最长非降子序列LIS问题](code/LIS.cpp)
 
