@@ -17,6 +17,8 @@ Talk is cheap, show me the code...
 - [使用函数指针调用不同的数列函数](code/functionPoint.cpp)
 - [泛型函数的实现](code/genericVector.cpp)
 - [使用泛型算法](code/useAlgorithm.cpp)
+- [this指针的使用](code/this.cpp)
+
 
 ### <Essential C++> study note
 
@@ -29,4 +31,6 @@ Just a note for myself, concise, no detail...
 
 
 ### Use git
-- 使用总结
+- [个人git使用总结](doc/git.md)
+
+
