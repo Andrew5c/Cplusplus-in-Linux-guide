@@ -2,7 +2,7 @@
 
 Talk is cheap, show me the code...
 
-### Problem in Leedcode
+### Problem in Leetcode
 - [直接循环求两数之和](code/twoNumSum.cpp)
 - [无重复字符最长子串](code/repetitionChar.cpp)
 - [整数反转（取值法）](code/reverseINT.cpp)
