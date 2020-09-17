@@ -86,7 +86,7 @@ class a{
 
 ### this指针
 - this指针是在成员函数内部用来指向其调用者（一个对象）的一个指针。
-- 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。比如：
+- 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。然后在调用时，this指针被传入该对象的一个引用。比如：
 ```
 Triangular& Triangular::copy(const Triangular &rhs){
     // 函数实现
@@ -107,4 +107,39 @@ copy(&tr1, tr2);
 [本节代码展示](../code/this.cpp)
 
 ### 静态（static）类成员
-- 
+- 静态数据成员表示**唯一的、可共享的**成员。它可以在同一个类的所有对象中被访问。
+- 对于某一个类来说，静态数据成员只有唯一的一个实体，需要在全局定义，并且定义的时候加上class scope运算符，比如：
+```
+class Triangular{
+    private:
+    static vector<int> _elems;
+}
+// 类外进行定义
+vector<int> Triangular::_elems;
+```
+- 它的访问方式和一般非静态数据成员的访问方式一样。
+
+#### 静态成员函数
+- 不访问任何非静态数据成员的成员函数，才能够被声明成static。
+
+> 一般情况下，成员函数需要通过类的某个对象来调用。调用时，这个对象会被绑定至该成员函数的this指针。
+
+- 这时，静态成员函数的工作和任何对象都没有关系，在类定义完成后，既可以直接调用静态函数成员。只是调用时，需要在前面加上class scope。比如：
+```
+class Triangular{
+    public:
+    // 类内声明
+    static bool is_elem(int );
+    ... // 其他
+}
+// 类外定义， 无需加上static
+bool Triangular::is_elem(int a){
+    ... // 定义
+}
+// 其他函数中调用
+int main(){
+    if(Triangular::is_elem(val))
+        ... // 细节
+}
+```
+

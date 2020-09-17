@@ -38,7 +38,7 @@ int romaToInt(string roma){
 }
     
 int main(){
-    string roma = "VXL";
+    string roma = "III";
     int sum = romaToInt(roma);
 
     cout << roma << " is the num: " << sum << endl;
