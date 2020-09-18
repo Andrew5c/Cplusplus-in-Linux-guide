@@ -1,7 +1,7 @@
 /*************************************************************************
 	> File Name: threeSum.cpp
-	> Author: Andrew. Q 
-	> Mail: 
+	> Author: Andrew. Q
+	> Mail:
 	> Created Time: 2020年09月17日 星期四 20时49分07秒
  ************************************************************************/
 // 三数之和，数组中有n个整数，找出所有满足之和为0且不重复的三元组
@@ -35,8 +35,6 @@ vector<vector<int> > threeSum(vector<int>& nums){
                 res[cnt][2] = *pt; save.insert(*pt);
                 cnt++;
             }
-            else
-                continue;
         }
     }
     return res;
@@ -46,7 +44,7 @@ int main(){
     int a[] = {-1, 0, 1, 2, -1, -4};
     vector<int> num(a, a+6);
     vector<vector<int> > res = threeSum(num);
-    
+
     // 输出二维数组的内容
     for(int i=0; i<res.size(); i++){
         cout << res[i][0] << ' ' << res[i][1] << ' ' << res[i][2] << endl;
