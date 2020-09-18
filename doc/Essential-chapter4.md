@@ -86,6 +86,7 @@ class a{
 
 ### this指针
 - this指针是在成员函数内部用来指向其调用者（一个对象）的一个指针。
+- this指针可以让我们访问调用者的一切；
 - 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。然后在调用时，this指针被传入该对象的一个引用。比如：
 ```
 Triangular& Triangular::copy(const Triangular &rhs){
@@ -103,6 +104,9 @@ tr1.copy(tr2);
 copy(&tr1, tr2);
 // 这个时候，不难理解this指针为什么会指向其调用者。
 ```
+
+- `return *this` 返回指针所指的对象；
+
 - 这会在我们要复制一个对象给另一个对象的时候用到。
 [本节代码展示](../code/this.cpp)
 
@@ -143,3 +147,34 @@ int main(){
 }
 ```
 
+### 打造一个迭代类（Itreator Class）
+目的在于利用运算符重载技术，让类具有迭代的性质mZ
+
+[本节代码实例](../code/operatorOverload/)
+
+**运算符重载**
+- 为类定义运算符，可以像定义成员函数一样来定义。区别是运算符不用指定函数名称，只需要在运算符前面加上`operator`；
+- 对于前置递增和后置递增运算符，因为他们函数原型基本一致，根据重载规则，参数列表不同相同，因此，我们常在后置递增运算符的参数列表中加入一个`int`参数，但是调用时，并不传入。由编译器自动为其置0；
+
+
+#### 嵌套类型
+- `typedef`可以为某个类型设定另一个不同的名称；
+```
+typedef existing_type new_name;
+// 在我们的例子中
+class Triangular{
+typedef Triangular_iterator itreator;
+}
+// 使用
+Triangular::itreator it = trian.begin();
+// 其中，这里使用的class scope，是用来告诉编译器，遇到这个iterator时，去Triangular内部寻找定义
+```
+
+#### 友元函数
+- 想要类A中的成员函数访问类B中的私有数据成员的话，一种方式是将这个数据成员在类B中声明为 friend 。
+- 如果A和B的定义不在同一个头文件中，那么需要在B中对A进行超前声明。就是在B所在文件的顶部写下`class A`；
+- 这个friend声明可以出现在类B定义中的任何位置，不受public和private影响；
+
+- 也可以直接让A和B直接建立friend关系。这时A中的所有成员函数都能够访问B中的数据成员。
+
+- friend的建立通常是为了效率考虑。有时候，也可以直接提供一个具有public访问权限的inline函数。
