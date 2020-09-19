@@ -177,4 +177,46 @@ Triangular::itreator it = trian.begin();
 
 - 也可以直接让A和B直接建立friend关系。这时A中的所有成员函数都能够访问B中的数据成员。
 
-- friend的建立通常是为了效率考虑。有时候，也可以直接提供一个具有public访问权限的inline函数。
+- friend的建立通常是为了效率考虑。有时候，也可以直接提供一个具有public访问权限的inline函数直接为其他类提供需要的数据。
+
+### 拷贝赋值运算符
+
+> 在前面实现拷贝构造函数的时候，我们没有考虑重载Matrix类的赋值运算符。
+
+- 拷贝赋值运算符的实现会取代默认数据成员的拷贝操作。
+```
+class Matrix{
+    public:
+    // 构造与析构函数实现
+    private:
+    int _row, _col;
+    double* _pmat;
+};
+// 拷贝构造函数的实现见前面
+// 实现拷贝赋值运算符
+Matrix& Matrix::operator=(const Matrix &rhs){
+    if(*this != rhs){
+        _row = rhs._row;
+        _col = rhs._col;
+        int elem_cnt = _row * _col;
+        delete [] _pmat;
+        _pmat = new double[elem_cnt];
+        for(int i=0; i<elem_cnt; i++){
+            _pmat[i] = rhs._pmat[i];
+        }
+    }
+    return *this;
+}
+
+```
+
+### 实现一个function object
+
+> function object是某种class的实例对象，并且这类class对function call运算符做了重载。这样，可以将function object 作为一般函数使用。
+- 之所以使用function object，而不是一般函数，主要是为了效率。可以令call运算符成为inline，可以消除“通过函数指针来调用函数”时产生的额外开销。
+- 标准库定义了 算术、关系、逻辑三类function object。
+- 需要包含 functional 头文件。
+
+
+
+
