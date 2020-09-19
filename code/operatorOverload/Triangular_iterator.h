@@ -7,12 +7,15 @@
 
 #ifndef _TRIANGULAR_ITERATOR_H
 #define _TRIANGULAR_ITERATOR_H
+#include "Triangular.h"
+
+using namespace std;
 
 class Triangular;
 
 class Triangular_iterator{
     public:
-    Triangular_iterator(index): _index(index-1) {};
+    Triangular_iterator(int index): _index(index-1) {};
     bool operator==(const Triangular_iterator& ) const;
     bool operator!=(const Triangular_iterator& ) const;
     int operator*() const;
@@ -53,7 +56,8 @@ inline Triangular_iterator& Triangular_iterator::operator++(int) {
 
 inline void Triangular_iterator::check_integrity() const {
     if(_index > Triangular::_max_elems)
-        throw iterator_overflow();
+        // throw iterator_overflow();
+        ;
     if(_index > Triangular::_elems.size())
         Triangular::gen_elems(_index+1);
 }
