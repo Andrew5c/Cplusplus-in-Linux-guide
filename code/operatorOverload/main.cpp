@@ -1,8 +1,8 @@
 /*************************************************************************
 	> File Name: main.cpp
-	> Author: Andrew. Q 
-	> Describe: 
-	> Created Time: 2020å¹´09æœˆ18æ—¥ æ˜ŸæœŸäº” 10æ—¶24åˆ†26ç§’
+	> Author: Andrew. Q
+	> Describe:
+	> Created Time: 2020Äê09ÔÂ18ÈÕ ĞÇÆÚÎå 10Ê±24·Ö26Ãë
  ************************************************************************/
 
 #include<iostream>
@@ -10,8 +10,8 @@
 using namespace std;
 
 int main() {
-    Triangular trian(1, 8);
-    Triangular::itreator it = trian.begin();
+    Triangular trian(9, 1);
+    Triangular::iterator it = trian.begin();
     Triangular::iterator end_it = trian.end();
 
     while(it != end_it){
