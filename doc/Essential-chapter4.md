@@ -84,7 +84,7 @@ class a{
 - 如果一个类的某个私有成员变量不属于**抽象概念一环**，也就是它的改变其实不会改变不会改变这个类的状态，那么，可以用``mutable``关键字来修饰。
 - 此时，可以在const成员函数中，对这种变量做出修改。
 
-### this指针
+### this指针（[本节代码展示](../code/this.cpp)）
 - this指针是在成员函数内部用来指向其调用者（一个对象）的一个指针。
 - this指针可以让我们访问调用者的一切；
 - 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。然后在调用时，this指针被传入该对象的一个引用。比如：
@@ -108,7 +108,7 @@ copy(&tr1, tr2);
 - `return *this` 返回指针所指的对象；
 
 - 这会在我们要复制一个对象给另一个对象的时候用到。
-[本节代码展示](../code/this.cpp)
+
 
 ### 静态（static）类成员
 - 静态数据成员表示**唯一的、可共享的**成员。它可以在同一个类的所有对象中被访问。
@@ -147,10 +147,9 @@ int main(){
 }
 ```
 
-### 打造一个迭代类（Itreator Class）
-目的在于利用运算符重载技术，让类具有迭代的性质mZ
+### 打造一个迭代类（Itreator Class）（[本节代码展示](../code/operatorOverload/)）
+> 目的在于利用运算符重载技术，让类具有迭代的性质。
 
-[本节代码实例](../code/operatorOverload/)
 
 **运算符重载**
 - 为类定义运算符，可以像定义成员函数一样来定义。区别是运算符不用指定函数名称，只需要在运算符前面加上`operator`；
@@ -210,13 +209,32 @@ Matrix& Matrix::operator=(const Matrix &rhs){
 
 ```
 
-### 实现一个function object
+### 实现一个function object（[本节代码展示](../code/functionCall.cpp)）
 
 > function object是某种class的实例对象，并且这类class对function call运算符做了重载。这样，可以将function object 作为一般函数使用。
+
 - 之所以使用function object，而不是一般函数，主要是为了效率。可以令call运算符成为inline，可以消除“通过函数指针来调用函数”时产生的额外开销。
+- function call运算符可以接受任意多个参数。这样可以被用来作为Matrix的多维度下标操作。（因为c++下面的下标操作只能够接受一个参数）
 - 标准库定义了 算术、关系、逻辑三类function object。
 - 需要包含 functional 头文件。
 
 
+### 指向类成员函数的指针
 
+- 直观印象
+```
+class num_sequence{
+    // ...
+};
+// 定义一个指向上述类的成员函数的指针
+// 注意需要指明它所指的是哪一个类
+void (num_sequence::*pt) (int ) = 0;
+```
+- 上面这段代码定义了 num_sequence 类的一个成员函数指针，该函数的返回值为void，接受一个int型参数， 并且初始化pt的值为0.
+
+- 通过 typedef 简化上述定义: 
+```
+typedef void (num_sequence::*PtrType) (int);
+PtrType pt = 0;
+```
 
