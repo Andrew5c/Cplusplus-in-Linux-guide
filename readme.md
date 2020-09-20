@@ -13,31 +13,41 @@
 - [DP-最长回文子串](code/longSubPali.cpp)
 - [DP-最长非降子序列LIS问题](code/LIS.cpp)
 
+---
 
 ### <Essential C++> study note :books:
 
 > Just a note for myself, concise, no detail...
 
 - [<Essential C++> Chapter 1](./doc/Essential-chapter1.md)——c++编程基础
- - c++简介
- - 一些对象的定义与初始化
- - 指针带来的弹性
+    - c++简介
+    - 一些对象的定义与初始化
+    - 指针带来的弹性
 
 - [<Essential C++> Chapter 2](./doc/Essential-chapter2.md)——面向过程的编程风格
- - 函数参数传递方式
- - 指针与引用
- - 动态内存管理new 与 delete
- - inline、重载、模板函数
- - 函数指针
+    - 函数参数传递方式
+    - 指针与引用
+    - 动态内存管理new 与 delete
+    - inline、重载、模板函数
+    - 函数指针
 
 - [<Essential C++> Chapter 3](./doc/Essential-chapter3.md)——泛型编程风格
- - 泛型的概念
- - 泛型指针--iterator
- - 使用、设计泛型算法
- - map 与 set
+    - 泛型的概念
+    - 泛型指针--iterator
+    - 使用、设计泛型算法
+    - map 与 set
 
-- [<Essential C++> Chapter 4](./doc/Essential-chapter4.md)
-- [<Essential C++> Chapter 5](./doc/Essential-chapter5.md)
+- [<Essential C++> Chapter 4](./doc/Essential-chapter4.md)——基于对象的编程风格
+    - 实现一个class、成员初始化方法
+    - 拷贝构造函数
+    - this指针
+    - 静态数据/函数成员
+    - 迭代类的实现（通过运算符重载）
+    - 函数对象
+    - 类成员函数指针
+
+- [<Essential C++> Chapter 5](./doc/Essential-chapter5.md)——面向对象的编程风格
+    - OOP介绍
 
 
 ### Code test in <Essential C++> :rocket:
@@ -50,10 +60,13 @@
 - [重载运算符详细实现迭代类](code/operatorOverload/)
 - [函数对象的实现与应用](code/functionCall.cpp)
 
+---
 
 ### Use git :bicyclist:
 - [个人git使用总结](doc/git.md)
 
+
+---
 
 ### Use Makefile :alarm_clock:
 - [一个例子介绍Makefile文件的编写](./doc/make.md)
