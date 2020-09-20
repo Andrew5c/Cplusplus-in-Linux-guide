@@ -18,9 +18,24 @@
 
 > Just a note for myself, concise, no detail...
 
-- [<Essential C++> Chapter 1](./doc/Essential-chapter1.md)
-- [<Essential C++> Chapter 2](./doc/Essential-chapter2.md)
-- [<Essential C++> Chapter 3](./doc/Essential-chapter3.md)
+- [<Essential C++> Chapter 1](./doc/Essential-chapter1.md)——c++编程基础
+ - c++简介
+ - 一些对象的定义与初始化
+ - 指针带来的弹性
+
+- [<Essential C++> Chapter 2](./doc/Essential-chapter2.md)——面向过程的编程风格
+ - 函数参数传递方式
+ - 指针与引用
+ - 动态内存管理new 与 delete
+ - inline、重载、模板函数
+ - 函数指针
+
+- [<Essential C++> Chapter 3](./doc/Essential-chapter3.md)——泛型编程风格
+ - 泛型的概念
+ - 泛型指针--iterator
+ - 使用、设计泛型算法
+ - map 与 set
+
 - [<Essential C++> Chapter 4](./doc/Essential-chapter4.md)
 - [<Essential C++> Chapter 5](./doc/Essential-chapter5.md)
 
@@ -42,7 +57,6 @@
 
 ### Use Makefile :alarm_clock:
 - [一个例子介绍Makefile文件的编写](./doc/make.md)
-- [一个简单的makefile文件](./code/operatorOverload/makefile)
 
 
 

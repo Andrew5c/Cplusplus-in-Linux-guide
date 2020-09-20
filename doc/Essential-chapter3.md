@@ -2,7 +2,7 @@
 
 泛型编程风格
 
-### 泛型编程
+### 泛型编程（[本节代码展示](../code/genericVector.cpp)）
 
 - STL的两种组件：容器、泛型算法；
 - 泛型算法与他要操作的元素的类型无关，其使用【函数模板】技术，达到【与操作对象的类型相互独立】的目的；
@@ -16,11 +16,11 @@
 每一个标准容器都会提供一个名为``begin（）``的操作函数，该函数返回一个iterator，指向容器的第一个元素；``end（）``操作函数指向最后一个元素的下一个位置；
 
 - 定义iterator:
-
 ```c++
 vector<string> svec;
 vector<string>::iterator iter = svec.begin();
 ```
+
 **解释**：定义``iter``为一个iterator， 其指向vector，且该vector的元素类型为string， ``iter``其初值指向svec的第一个元素；通过iterator调用底部的string元素所提供的操作时，可以使用【箭头运算符``->``】；通过迭代器取得元素值的时候，采用指针的取用方式。 
 
 
