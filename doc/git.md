@@ -39,3 +39,14 @@
 
 - 本地删除了某个文件怎么办？
 可以直接通过 ``git rm`` 删除文件。然后再push。这时本地和github中的文件都会被删除。如果此时通过另一个终端（比如我在win下面删除之后，再在Linux下面操作）进行pull操作后，另一个终端本地下的文件也会同步的被删除。
+
+- 同时删除本地仓库和远程仓库的文件夹
+   正常直接在本地删除文件夹，然后正常add、commit、push就可以。
+
+- 删除远程仓库的文件夹，保留本地
+```
+git pull origin master
+git rm -r --cached file-NAME // cached选项不会把本地文件夹删除
+git commit ...
+git push...
+```

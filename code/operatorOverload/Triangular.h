@@ -11,6 +11,7 @@
 #include <vector>
 using namespace std;
 
+
 class Triangular_iterator{
     public:
     Triangular_iterator(int index): _index(index-1) {};
