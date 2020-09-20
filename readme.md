@@ -15,7 +15,7 @@
 
 ---
 
-### <Essential C++> study note :books:
+### <Essential C++> study notes :books:
 
 > Just a note for myself, concise, no detail...
 
