@@ -12,6 +12,7 @@
 - [最长公共前缀（表格法）](code/longestPrefix.cpp)
 - [DP-最长回文子串](code/longSubPali.cpp)
 - [DP-最长非降子序列LIS问题](code/LIS.cpp)
+- [双指针法解三数之和](code/threeSum.cpp)
 
 ---
 
