@@ -14,27 +14,36 @@
 
 using namespace std;
 
-vector<vector<int> > threeSum(vector<int>& nums){
-    // 函数内部定义一个vector， 返回时，返回的是该临时对象的一个拷贝
-    // 因此，当数据量很大的时候，不适合这种方法
-    vector<vector<int> > res;
+/*
+* 双指针法求解三数之和
+* 当我们需要枚举数组中的两个元素时，如果我们发现随着第一个元素的递增，第二个元素是递减的，
+* 那么就可以使用双指针的方法，将枚举的时间复杂度从 O(N^2) 降低至 O(N)。
+* 在枚举的每一个过程中，左指针向右移动一个位置，右指针向左移动若干个位置。
+* 当然可能需要保证左指针一直位于右指针的左侧
+*/
+vector<vector<int> > threeSum2(vector<int> &nums){
     int len = nums.size();
-    vector<int>::iterator endPt = nums.end();
-    vector<int>::iterator startPt = nums.begin();
-    vector<int>::iterator pt;
-    set<int> save;
-    int cnt = 0; // 满足要求的三元组计数器
-    for(int i=0; i<len-2; i++){
-        for(int j=i+1; j<len-1; j++){
-            int temp = nums[i] + nums[j];
-            pt = find(startPt+j+1, endPt, -temp);
-            // 判断是否检索到第三个数，并且是否和之前的三元组重复
-            if(pt != endPt && !(0 != save.count(nums[i]) && 0 != save.count(nums[j]))){
-                res[cnt][0] = nums[i]; save.insert(nums[i]);
-                res[cnt][1] = nums[j]; save.insert(nums[j]);
-                res[cnt][2] = *pt; save.insert(*pt);
-                cnt++;
+    vector<vector<int> > res;
+    sort(nums.begin(), nums.end());
+    // 每趟循环 固定第一个数
+    for(int i=0; i<len; i++){
+        // 这里有一个小技巧，就是如果想执行if(nums[i]==nums[i-1])类似的语句
+        // 但是又不想执行i=0的情况，那么就可以学习下面这种写法，很棒！
+        if(i>0 && nums[i]==nums[i-1])
+            continue;
+        int target = -nums[i];
+        int pt2 = len - 1;  // 右指针
+        // 左指针
+        for(int pt1=i+1; pt1<len; pt1++){
+            if(pt1>i+1 && nums[pt1]==nums[pt1-1])
+                continue;
+            // 在保证左指针小于右指针的情况下
+            // 持续根据和的结果移动指针
+            while(pt1<pt2 && nums[pt1]+nums[pt2]>target){
+                    pt2--;
             }
+            if(nums[pt1]+nums[pt2] == target && pt1!=pt2)
+                res.push_back({nums[i], nums[pt1], nums[pt2]});
         }
     }
     return res;
@@ -43,11 +52,12 @@ vector<vector<int> > threeSum(vector<int>& nums){
 int main(){
     int a[] = {-1, 0, 1, 2, -1, -4};
     vector<int> num(a, a+6);
-    vector<vector<int> > res = threeSum(num);
+    vector<vector<int> > res = threeSum2(num);
 
     // 输出二维数组的内容
-    for(int i=0; i<res.size(); i++){
+    for(unsigned int i=0; i<res.size(); i++){
         cout << res[i][0] << ' ' << res[i][1] << ' ' << res[i][2] << endl;
     }
     return 0;
 }
+
