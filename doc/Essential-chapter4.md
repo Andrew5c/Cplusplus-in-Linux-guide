@@ -11,7 +11,8 @@
 	- 当object结束声明时，编译器自动调用析构函数来释放在构造函数中（或者对象声明周期中）分配的资源。
 
 #### 成员初始化列表
-```
+
+```c++
 class Triangular{
 public:
 	Triangular(const Triangular &rhs);
@@ -27,7 +28,8 @@ Triangular::Triangular(const Triangular &rhs)
 
 #### 成员逐一初始化（拷贝构造函数）
 - 当我们以一个对象的初值作为另一个对象的初始的时候，类数据成员会被依次复制。比如：
-```
+
+```c++
 Triangular tril1(8);
 Triangular tril2(tril1);
 ```
@@ -35,7 +37,7 @@ Triangular tril2(tril1);
 
 - 但是需要注意的是，当一个类中有**申请内存**的操作时，不能够这样进行直接初始化；
 比如下面这个类的设计：
-```
+```c++
 class Matrix{
     public:
     Matrix(int row, int col):_row(row), _col(col){
@@ -54,7 +56,7 @@ class Matrix{
 > 因为这样的话，被实例化的两个对象会同时指向同一块内存，而当其中一个对象析构后，该内存就被释放，而此时另一个对象中的某个成员还在指向这块内存。这时危险的！
 
 - 这种情况下，我们可以为这样的类提供一个**拷贝构造函数**。它的唯一参数是一个 const reference，指向自己类的对象。比如：
-```
+```c++
 Matrix::Matrix(const Matrix &rhs)
     :_row(rhs._row), _col(rhs._col)
 {
@@ -71,7 +73,7 @@ Matrix::Matrix(const Matrix &rhs)
 #### 可变（mutable）和不变（const）
 - 在成员函数的参数列表之后，紧跟一个``const``修饰符时，是为了告诉编译器，这个成员函数不会修改对象的内容；
 - 如果成员函数定义在在class主体之外，那么需要在声明和定义处同时指定const；
-```
+```c++
 class a{
     public:
     // 类内声明const
@@ -88,7 +90,7 @@ class a{
 - this指针是在成员函数内部用来指向其调用者（一个对象）的一个指针。
 - this指针可以让我们访问调用者的一切；
 - 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。然后在调用时，this指针被传入该对象的一个引用。比如：
-```
+```c++
 Triangular& Triangular::copy(const Triangular &rhs){
     // 函数实现
 }
@@ -105,7 +107,7 @@ copy(&tr1, tr2);
 // 这个时候，不难理解this指针为什么会指向其调用者。
 ```
 
-- `return *this` 返回指针所指的对象；
+- `return \*this` 返回指针所指的对象；
 
 - 这会在我们要复制一个对象给另一个对象的时候用到。
 
@@ -113,7 +115,7 @@ copy(&tr1, tr2);
 ### 静态（static）类成员
 - 静态数据成员表示**唯一的、可共享的**成员。它可以在同一个类的所有对象中被访问。
 - 对于某一个类来说，静态数据成员只有唯一的一个实体，需要在全局定义，并且定义的时候加上class scope运算符，比如：
-```
+```c++
 class Triangular{
     private:
     static vector<int> _elems;
@@ -129,7 +131,7 @@ vector<int> Triangular::_elems;
 > 一般情况下，成员函数需要通过类的某个对象来调用。调用时，这个对象会被绑定至该成员函数的this指针。
 
 - 但是，静态成员函数的工作和任何对象都没有关系，所以它内部是没有this指针的。在类定义完成后，既可以直接调用静态函数成员。只是调用时，需要在前面加上class scope。比如：
-```
+```c++
 class Triangular{
     public:
     // 类内声明
@@ -163,7 +165,7 @@ int main(){
 
 #### 嵌套类型
 - `typedef`可以为某个类型设定另一个不同的名称；
-```
+```c++
 typedef existing_type new_name;
 // 在我们的例子中
 class Triangular{
@@ -188,7 +190,7 @@ Triangular::itreator it = trian.begin();
 > 在前面实现拷贝构造函数的时候，我们没有考虑重载Matrix类的赋值运算符。
 
 - 拷贝赋值运算符的实现会取代默认数据成员的拷贝操作。
-```
+```c++
 class Matrix{
     public:
     // 构造与析构函数实现
@@ -227,7 +229,7 @@ Matrix& Matrix::operator=(const Matrix &rhs){
 ### 指向类成员函数的指针
 
 - 直观印象
-```
+```c++
 class num_sequence{
     // ...
 };
@@ -238,7 +240,7 @@ void (num_sequence::*pt) (int ) = 0;
 - 上面这段代码定义了 num_sequence 类的一个成员函数指针，该函数的返回值为void，接受一个int型参数， 并且初始化pt的值为0.
 
 - 通过 typedef 简化上述定义: 
-```
+```c++
 typedef void (num_sequence::*PtrType) (int);
 PtrType pt = 0;
 ```
