@@ -13,6 +13,8 @@
 - [DP-最长回文子串](code/longSubPali.cpp)
 - [DP-最长非降子序列LIS问题](code/LIS.cpp)
 - [双指针法解三数之和](code/threeSum.cpp)
+- [合法括号检测](code/validBrackets.cpp)
+
 
 ---
 
