@@ -49,6 +49,7 @@
 
 - [<Essential C++> Chapter 5](./doc/Essential-chapter5.md)——面向对象的编程风格
     - OOP介绍
+    - 抽象基类与派生类
 
 
 ### Code test in <Essential C++> :rocket:
@@ -70,7 +71,7 @@
 ---
 
 ### Use Makefile :alarm_clock:
-- [一个例子介绍Makefile文件的编写](./doc/make.md)
+- [一个例子学习Makefile文件](./doc/make.md)
 
 
 
