@@ -18,9 +18,9 @@
 #### 访问类型(Y可以访问， N无法访问)
 |类型 | class自身| 派生类 | 其他程序 |
 |-----| -------- | ------ | -------- |
-|public| :Y: | :Y: | :Y: |
-|protect| :Y: | :Y: | :N: |
-|private| :Y: | :N: | :N: |
+|public| Y | Y | Y |
+|protect| Y | Y | N |
+|private| Y | N | N |
 
 ### 定义一个抽象基类
 步骤：

@@ -52,6 +52,7 @@
 - [<Essential C++> Chapter 5](./doc/Essential-chapter5.md)——面向对象的编程风格
     - OOP介绍
     - 抽象基类与派生类
+    - 虚函数与纯虚函数
 
 
 ### Code test in <Essential C++> :rocket:
