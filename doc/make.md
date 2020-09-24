@@ -91,4 +91,5 @@ clean:
 
 
 #### 参考链接
-- [跟我一起写makefile v1.0]()
+- [跟我一起写makefile v1.0](https://seisman.github.io/how-to-write-makefile/index.html)
+

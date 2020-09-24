@@ -85,8 +85,8 @@
 
 ---
 
-### Use Makefile :alarm_clock:
-- [一个例子学习Makefile文件](./doc/make.md)
-
+### Use Make & CMake :alarm_clock:
+- [一个例子学习Makefile](./doc/make.md)
+- [继续学习CMake使用](./doc/cmake.md)
 
 
