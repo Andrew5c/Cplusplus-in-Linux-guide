@@ -42,7 +42,7 @@ target-name : require-files
 
 编译main.cpp的时候，依赖Triangular.h文件。 它的makefile文件可以编写如下（注释是特地在这里添加的）：
 ```
-objects = main.o   # 定义多个目标文件，方便后面使用
+objects = main.o   # 变量定义，方便后面使用，如果有多个目标文件，之间空格隔开即可
 cc = g++    # 使用的编译器类型
 
 test : $(objects)  # 生成可执行文件所需要的目标文件

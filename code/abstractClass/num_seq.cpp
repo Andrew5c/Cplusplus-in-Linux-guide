@@ -7,7 +7,18 @@
 
 #include "num_seq.h"
 
-using namespace std;
+ostream& operator<< (ostream &os, const num_seq &rhs){
+	return rhs.print(os);
+}
 
-
-
+bool num_seq::check_integrity(int pos, int size) const {
+	if(pos < 0 || pos > _max_elem){
+		cerr << "!! invalid position: " << pos \
+		<< ", cannot honor request \n";
+		return false;
+	}
+	if (pos > size){
+		gen_elem(pos);
+	}
+	return true;
+}

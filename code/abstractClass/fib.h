@@ -8,21 +8,26 @@
 #ifndef _FIB_H
 #define _FIB_H
 
-class fib
-{
-private:
-	/* data */
+#include"num_seq.h"
+#include<vector>
+using namespace  std;
+
+class fib : public num_seq{
 public:
-	fib(/* args */);
-	~fib();
+	fib(int len=1, int beg_pos=1):_beg_pos(beg_pos), _len(len) {};
+	virtual int elem(int pos) const;
+	// virtual const char* what_am_i() const;
+	virtual ostream& print(ostream& os = cout) const;
+	int length() const {return _len;}
+	int beg_pos() const {return _beg_pos;}
+
+	~fib() {};
+protected:
+	// 覆盖基类的纯虚函数，以自己的方式增长数列
+	virtual void gen_elem(int pos) const;
+	int _beg_pos;
+	int _len;
+	static vector<int> _elem;
 };
-
-fib::fib(/* args */)
-{
-}
-
-fib::~fib()
-{
-}
 
 #endif
