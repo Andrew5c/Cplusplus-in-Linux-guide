@@ -1,11 +1,11 @@
-# My Codeing Practice Wiki
+# My Codeing Practice Wiki :earth_africa:
 
 
 ### Environment configuration & Books
 
 > 因为想要更彻底的了解与学习程序的编译与执行过程，这里选择在Linux环境下面coding和学习。建立这个仓库是想要在记录自己学习的过程中，更多的跟大家分享自己的总结、学习经历。共同学习，共同进步。
 
-#### Environment
+#### Environment :computer:
 - Ubuntu 16.04 + Visual Studio Code （使用vs code仅仅编写代码，编译还是在终端下面使用makefile）
     - [vs code 下载到本地](https://code.visualstudio.com/Download)
     - 解压： `sudo dpkg -i your-.deb-file-name`
@@ -13,6 +13,7 @@
 
 - [一个很好的vim插件](https://github.com/luckxiang/vim) （基本的vim操作还是要熟悉一下的）
 
+#### Books :books:
 ---
 
 *Talk is cheap, show me the code   ————Linus Torvalds*
@@ -78,10 +79,11 @@
 - [this指针的使用](code/this.cpp)
 - [重载运算符详细实现迭代类](code/operatorOverload/)
 - [函数对象的实现与应用](code/functionCall.cpp)
+- [抽象类的建立与使用](code/abstractClass)
 
 ---
 
-### Algorithm in C++
+### Algorithm in C++ :tada:
 ...
 
 ---
@@ -97,7 +99,7 @@
 
 ---
 
-### Learn project in open source
+### Learn project from open source :couple:
 > 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，亲手实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
 
 - [终端版2048](https://github.com/plibither8/2048.cpp)
