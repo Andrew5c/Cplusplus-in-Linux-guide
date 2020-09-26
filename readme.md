@@ -1,4 +1,4 @@
-# My Codeing Practice Wiki :earth_africa:
+# My Coding Practice Wiki :earth_africa:
 
 
 ### Environment configuration & Books
