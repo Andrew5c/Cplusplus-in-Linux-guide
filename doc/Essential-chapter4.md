@@ -155,7 +155,7 @@ int main(){
 
 > 目的在于利用运算符重载技术，让类具有迭代的性质。
 
-**运算符重载**
+#### **运算符重载**
 - 为类定义运算符，可以像定义成员函数一样来定义。区别是运算符不用指定函数名称，只需要在运算符前面加上`operator`；
 - 对于前置递增和后置递增运算符，因为他们函数原型基本一致，根据重载规则，参数列表不同相同，因此，我们常在后置递增运算符的参数列表中加入一个`int`参数，但是调用时，并不传入。由编译器自动为其置0；
 
@@ -236,6 +236,27 @@ Matrix& Matrix::operator=(const Matrix &rhs){
 - function call运算符可以接受任意多个参数。这样可以被用来作为Matrix的多维度下标操作。（因为c++下面的下标操作只能够接受一个参数）
 - 标准库定义了 算术、关系、逻辑三类function object。
 - 需要包含 functional 头文件。
+
+### 重载iostream运算符
+- 目的在于想要对某一个class object进行读取与写入操作；
+
+比如：
+```c++
+Triangular trian;
+cout << trian;
+```
+此时，需要为 Triangular类提供output重载运算符
+```c++
+// 最好以非成员函数的形式实现
+ostream& operator<< (ostream &os, const Triangular &rhs){
+    cout << "(" << rhs.beg_pos() << "," << rhs.length() << ")";
+    // 调用类的显示函数进行输出
+    rhs.display(rhs.length(), rhs.beg_pos(), os);
+    return os;
+}
+```
+- 这里重载函数传入的ostream又被返回，是为了能够串接多个output运算符。
+- 之所以使用非成员函数的形式实现，是为了避免造成困惑。因为如果设计成成员函数的话，`<<`运算符的左操作数必须是属于同一个类的对象才行，这时，输出一个类可能需要这样写：`trian << cout << '\n';`，会造成困惑。
 
 
 ### 指向类成员函数的指针

@@ -18,6 +18,7 @@ bool num_seq::check_integrity(int pos, int size) const {
 		return false;
 	}
 	if (pos > size){
+		// 这里由于多态性质，会根据调用者所属的派生类对象，来调用其相应的增长函数
 		gen_elem(pos);
 	}
 	return true;

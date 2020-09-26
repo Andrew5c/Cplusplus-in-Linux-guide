@@ -41,7 +41,7 @@ target-name : require-files
 - Triangular.h
 
 编译main.cpp的时候，依赖Triangular.h文件。 它的makefile文件可以编写如下（注释是特地在这里添加的）：
-```
+```makefile
 objects = main.o   # 变量定义，方便后面使用，如果有多个目标文件，之间空格隔开即可
 cc = g++    # 使用的编译器类型
 
@@ -69,7 +69,7 @@ clean:
 > make只要看到一个.o文件，就会自动把.c文件加入依赖关系，并且`cc -c main.cpp`这个命令也会被自动推导出来。
 
 因此，上面的makefile文件可以简写如下
-```
+```makefile
 objects = main.o   # 可以定义多个目标文件，方便后面使用
 cc = g++    # 使用的编译器类型
 
@@ -84,6 +84,8 @@ clean:
     rm $(objects) test
 	@echo "clean done!"
 ```
+
+- [一个稍微复杂的例子](../code/abstractClass)
 
 ### makefile文件名
 - 最好使用`makefile`或者`Makefile`，这是make会去自动搜索的文件

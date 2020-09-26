@@ -12,13 +12,11 @@ using namespace std;
 
 int main() {
 	fib f1;
-	cout << "sfsfdsfs";
+	cout << f1.what_am_i()  << " begin at element 1 for 1 element: " << f1 << endl;
 
-	cout << f1;
-	// cout << "begin at element 1 for 1 element" << f1 << endl;
-
-	// fib f2(10, 2);
-	// cout << "begin at element 2 for 10 element" << f2 << endl;
-
+	cout << "-----------------------\n";
+	
+	fib f2(10, 5);
+	cout << f2.what_am_i() << " begin at element 5 for 10 element: " << f2 << endl;
 	return 0;
 }

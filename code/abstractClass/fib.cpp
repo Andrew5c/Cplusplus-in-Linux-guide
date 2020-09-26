@@ -10,6 +10,8 @@
 
 using namespace std;
 
+// 静态数据成员类内声明，类外初始化
+// 初始化时，不需要static，但是需要作用域说明
 vector<int> fib::_elem;
 
 // const修饰的函数可以修改静态成员变量
@@ -34,17 +36,13 @@ int fib::elem(int pos) const
 	return fib::_elem[pos - 1];
 }
 
-// const char *fib::what_am_i() const
-// {
-// }
-
 ostream &fib::print(ostream &os) const
 {
 	int beg_pos = _beg_pos - 1;
 	int end_pos = beg_pos + _len;
 	if (end_pos > fib::_elem.size())
 		fib::gen_elem(end_pos);
-	os << '(' << _beg_pos << ',' << _len << ')';
+	os << '(' << _beg_pos << ',' << _len << ") : ";
 	for (; beg_pos < end_pos; beg_pos++)
 	{
 		os << fib::_elem[beg_pos] << ' ';

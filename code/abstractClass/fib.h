@@ -14,9 +14,9 @@ using namespace  std;
 
 class fib : public num_seq{
 public:
-	fib(int len=1, int beg_pos=1):_beg_pos(beg_pos), _len(len) {};
+	fib(int len=1, int beg_pos=1):_beg_pos(beg_pos), _len(len), name("Fibnicca") {};
 	virtual int elem(int pos) const;
-	// virtual const char* what_am_i() const;
+	virtual const char* what_am_i() const {return name;}
 	virtual ostream& print(ostream& os = cout) const;
 	int length() const {return _len;}
 	int beg_pos() const {return _beg_pos;}
@@ -27,6 +27,7 @@ protected:
 	virtual void gen_elem(int pos) const;
 	int _beg_pos;
 	int _len;
+	const char *name;
 	static vector<int> _elem;
 };
 

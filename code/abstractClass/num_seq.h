@@ -20,12 +20,10 @@ public:
 	// feed the value of a position
 	virtual int elem(int pos) const = 0;
 	// feed the name of current actual sequence
-	// virtual const char* what_am_i() const = 0;
+	virtual const char* what_am_i() const = 0;
 	static int max_elem() {return _max_elem;}
 	// this is not a overloading, just a function named "print"
 	virtual ostream& print(ostream &os = cout) const = 0;
-	// overloading the output operator
-	ostream& operator<<(ostream &);
 
 protected:
 	// 将数列的元素增长到指定的位置
@@ -34,5 +32,7 @@ protected:
 	bool check_integrity(int pos, int size) const;
 	const static int _max_elem = 1024;
 };
+
+ostream& operator<< (ostream &os, const num_seq &rhs);
 
 #endif
