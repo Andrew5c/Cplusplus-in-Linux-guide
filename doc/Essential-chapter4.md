@@ -86,7 +86,7 @@ class a{
 - 如果一个类的某个私有成员变量不属于**抽象概念一环**，也就是它的改变其实不会改变不会改变这个类的状态，那么，可以用``mutable``关键字来修饰。
 - 此时，可以在const成员函数中，对这种变量做出修改。
 
-### this指针（[本节代码展示](../code/this.cpp)）
+### this指针（[本节代码展示](../code/essential/this.cpp)）
 - this指针是在成员函数内部用来指向其调用者（一个对象）的一个指针。
 - this指针可以让我们访问调用者的一切；
 - 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。然后在调用时，this指针被传入该对象的一个引用。比如：
@@ -228,7 +228,7 @@ Matrix& Matrix::operator=(const Matrix &rhs){
 
 ```
 
-### 实现一个function object（[本节代码展示](../code/functionCall.cpp)）
+### 实现一个function object（[本节代码展示](../code/essential/functionCall.cpp)）
 
 > function object是某种class的实例对象，并且这类class对function call运算符做了重载。这样，可以将function object 作为一般函数使用。
 

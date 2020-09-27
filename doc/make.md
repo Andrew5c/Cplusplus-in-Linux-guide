@@ -35,7 +35,7 @@ target-name : require-files
 - 如果target所依赖的`.o`文件也不存在，make会继续类似上面的步骤生成该`.o`文件
 > make执行时，只会去寻找文件的依赖性，如果依赖文件找不到，那么make会报错。至于command是否正确，make不关心。
 
-### 一个简单的例子[工程文件](../code/operatorOverload)
+### 一个简单的例子（[工程文件](../code/operatorOverload)）
 在这个工程中，共有两个文件：
 - main.cpp
 - Triangular.h

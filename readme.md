@@ -19,17 +19,17 @@
 *Talk is cheap, show me the code   ————Linus Torvalds*
 
 ### Problem in Leetcode :trophy:
-- [直接循环求两数之和](code/twoNumSum.cpp)
-- [无重复字符最长子串](code/repetitionChar.cpp)
-- [整数反转（取值法）](code/reverseINT.cpp)
-- [判断回文数（对称取值）](code/ispali.cpp)
-- [两数相加（链表实现），输出正序逆序链表](code/singleListNode.cpp)
-- [罗马数字转整数](code/roma2Int.cpp)
-- [最长公共前缀（表格法）](code/longestPrefix.cpp)
-- [DP-最长回文子串](code/longSubPali.cpp)
-- [DP-最长非降子序列LIS问题](code/LIS.cpp)
-- [双指针法解三数之和](code/threeSum.cpp)
-- [合法括号检测](code/validBrackets.cpp)
+- [直接循环求两数之和](code/LC/twoNumSum.cpp)
+- [无重复字符最长子串](code/LC/repetitionChar.cpp)
+- [整数反转（取值法）](code/LC/reverseINT.cpp)
+- [判断回文数（对称取值）](code/LC/ispali.cpp)
+- [两数相加（链表实现），输出正序逆序链表](code/LC/singleListNode.cpp)
+- [罗马数字转整数](code/LC/roma2Int.cpp)
+- [最长公共前缀（表格法）](code/LC/longestPrefix.cpp)
+- [DP-最长回文子串](code/LC/longSubPali.cpp)
+- [DP-最长非降子序列LIS问题](code/LC/LIS.cpp)
+- [双指针法解三数之和](code/LC/threeSum.cpp)
+- [合法括号检测](code/LC/validBrackets.cpp)
 
 ---
 
@@ -71,14 +71,14 @@
 
 
 ### Code test in <Essential C++> :rocket:
-- [函数参数传递方式&模板函数实现冒泡排序](code/callFunction.cpp)
-- [Fibonicca函数中使用静态对象，避免重复计算](code/fibonacci.cpp)
-- [使用函数指针调用不同的数列函数](code/functionPoint.cpp)
-- [泛型函数的实现](code/genericVector.cpp)
-- [使用泛型算法](code/useAlgorithm.cpp)
-- [this指针的使用](code/this.cpp)
+- [函数参数传递方式&模板函数实现冒泡排序](code/essential/callFunction.cpp)
+- [Fibonicca函数中使用静态对象，避免重复计算](code/essential/fibonacci.cpp)
+- [使用函数指针调用不同的数列函数](code/essential/functionPoint.cpp)
+- [泛型函数的实现](code/essential/genericVector.cpp)
+- [使用泛型算法](code/essential/useAlgorithm.cpp)
+- [this指针的使用](code/essential/this.cpp)
 - [重载运算符详细实现迭代类](code/operatorOverload/)
-- [函数对象的实现与应用](code/functionCall.cpp)
+- [函数对象的实现与应用](code/essential/functionCall.cpp)
 - [抽象类的建立与使用](code/abstractClass)
 
 ---
