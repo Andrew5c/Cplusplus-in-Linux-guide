@@ -50,3 +50,10 @@ git rm -r --cached file-NAME // cached选项不会把本地文件夹删除
 git commit ...
 git push...
 ```
+
+- 如果在本地进行了git rm操作，并且已经commit、push到远程仓库的情况下，想要撤销该操作怎么办？（该操作也适用于错误使用`git pull`之后想要回退）
+	- 首先在本地`git reflog` 查看历史变更记录，见下图
+	！[](./fig/reflog.png)
+	- 确定自己需要回退到的那一个版本的版本号之后，比如我的5aa30a5版本后，执行`git reset --hard 5aa30a5`即可
+	- 如果仅仅是回退到上一个版本，也就是回到上一次commit之后的状态，也可以一个命令：`git reset --hard HEAD^`
+	- 
