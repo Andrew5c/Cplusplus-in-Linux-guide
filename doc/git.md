@@ -53,12 +53,11 @@ git push...
 
 - 如果在本地错误进行了`git rm`操作，并且已经commit、push到远程仓库的情况下，想要撤销该操作怎么办？（该操作也适用于错误使用`git pull`之后想要回退）
 	- 首先在本地`git reflog` 查看历史变更记录，见下图
-
-![reflog](./fig/reflog.png#center)
-
 	- 确定自己需要回退到的那一个版本的版本号之后，比如我的5aa30a5版本后，执行`git reset --hard 5aa30a5`即可
 	- 如果仅仅是回退到上一个版本，也就是回到上一次commit之后的状态，也可以使用另一个命令：`git reset --hard HEAD^`
 		- `--hard`：删除工作空间改动代码，撤销commit，撤销git add 
 		- `--soft`：不删除工作空间改动代码，撤销commit，不撤销git add
 		- `HEAD^^^`：后面的heat符号个数可以使用`HEAD～n`替代，表示回退到上n个版本
-	- 注意这个时候**本地的版本已经落后远程仓库的版本**了，直接进行push操作的话，是无法成功的。因为我主要想回退到上一个版本，因此需要强制远程仓库与本地版本保持一致，push 的时候需要加上`-f`参数，也就是`git push -f origin master`
+	- 注意这个时候**本地的版本已经落后远程仓库的版本**了，直接进行push操作的话，是无法成功的。因为我主要想回退到上一个版本，因此需要强制远程仓库与本地版本保持一致，push的时候需要加上`-f`参数，也就是`git push -f origin master`
+
+![reflog](./fig/reflog.png)
