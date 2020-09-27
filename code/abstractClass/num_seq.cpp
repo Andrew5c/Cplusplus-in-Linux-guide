@@ -6,10 +6,17 @@
  ************************************************************************/
 
 #include "num_seq.h"
+#include<typeinfo>
 
 ostream& operator<< (ostream &os, const num_seq &rhs){
 	return rhs.print(os);
 }
+
+void display(ostream &os, const num_seq &ns, int pos){
+	os << "the element at position " << pos << " for the  " << ns.what_am_i() << " is " \
+	   << ns.elem(pos) << endl;
+}
+
 
 bool num_seq::check_integrity(int pos, int size) const {
 	if(pos < 0 || pos > _max_elem){
@@ -23,3 +30,8 @@ bool num_seq::check_integrity(int pos, int size) const {
 	}
 	return true;
 }
+
+const char* num_seq::what_am_i_typeid() const {
+	return typeid(*this).name();
+}
+

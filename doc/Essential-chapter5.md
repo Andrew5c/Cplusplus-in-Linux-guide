@@ -126,3 +126,54 @@ public:
 *所谓设计，必须来来回回地借助程序员的经验和用户的反馈演进。————Lippman*
 
 
+- 一个类的数据成员，如果是以下三种情况之一的，其初始化应用 **成员初始化列表**
+    - const类型
+    - reference
+    - 某一个其他类的对象
+- 如果抽象基类具有实际的数据成员，我们需要为其提供构造函数，但是它仍然无法定义对象，该抽象基类扮演的角色是 其派生类对象的**子对象**;
+- 定义派生类对象的时候，编译器会首先调用其基类的构造函数。
+
+### 在派生类中定义虚函数
+- 其函数原型必须完全符合基类中声明的函数原型，包括：**参数列表、返回值类型、常量性**；
+- 派生类中，关键字virtual并非必要；
+
+**虚函数的静态解析**：
+- 在基类的构造函数中，派生类的虚函数绝对不会被调用；
+
+**多态 需要的间接性**
+> 在c++中，只有使用基类的pointer和reference，才能够支持OOP编程的概念。
+
+
+### 运行时的类型鉴定机制（RTTI）
+- Run-Time Type Identification (RTTI)：能够让我们查询多态化的class pointer和class reference，获取其所指对象的实际类型
+```c++
+#include<typeinfo>
+// 定义一个派生类的对象f1
+fib f1;
+num_seq *ps = &f1；
+if(typeid(*ps) == typeid(fib))
+    // OK, 上述条件成立
+```
+
+回顾这个工程中我们实现函数`what_am_i()`的代码，是通过返回一个事先定义好的字符串来实现的。
+其实还有一个办法：
+```c++
+#include<typeinfo>
+// 此时，该函数在基类中不再是纯虚的，
+inline const char* num_seq::what_am_i() const {
+    return typeid(*this).name();
+}
+```
+
+注意：
+通过`typeid()`输出自定义类型的名称的时候，返回的字符串的第一个元素是这个名字的长度。比如：
+```c++
+fib f1;
+cout << typeid(f1).name;
+```
+输出 `3fib`。可以使用下面的方式解决：
+```c++
+fib f1;
+const char *temp1 = f1.what_am_i_typeid();
+cout << ++temp1;
+```

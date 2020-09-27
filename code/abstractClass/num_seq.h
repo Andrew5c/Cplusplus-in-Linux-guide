@@ -21,6 +21,8 @@ public:
 	virtual int elem(int pos) const = 0;
 	// feed the name of current actual sequence
 	virtual const char* what_am_i() const = 0;
+	// re-write the function with RTTI
+	virtual const char* what_am_i_typeid() const;
 	static int max_elem() {return _max_elem;}
 	// this is not a overloading, just a function named "print"
 	virtual ostream& print(ostream &os = cout) const = 0;
@@ -33,6 +35,10 @@ protected:
 	const static int _max_elem = 1024;
 };
 
+// 非成员函数的形式实现output运算符重载
+// 需要提前声明
 ostream& operator<< (ostream &os, const num_seq &rhs);
+// 使用继承体系的显示函数
+void display(ostream &os, const num_seq &ns, int pos);
 
 #endif
