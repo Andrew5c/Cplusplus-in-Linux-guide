@@ -68,7 +68,12 @@
     - OOP介绍
     - 抽象基类与派生类
     - 虚函数与纯虚函数
+    - 运行时鉴定机制（RTTI）
 
+- [<Essential C++> chapter 6](./doc/Essential-chapter6.md)——以template进行编程
+
+
+---
 
 ### Code test in <Essential C++> :rocket:
 - [函数参数传递方式&模板函数实现冒泡排序](code/essential/callFunction.cpp)

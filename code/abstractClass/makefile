@@ -11,5 +11,5 @@ fib.o : num_seq.h num_seq.cpp fib.h
 .PHONY:clean
 clean:
 	@echo "cleaning files..."
-	rm $(objects) TEST
+	-rm $(objects) TEST
 	@echo "clean done!"
