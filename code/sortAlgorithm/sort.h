@@ -9,17 +9,20 @@
 #define _SORT_H
 
 #include<vector>
+using namespace std;
 
 //
 class Sort{
     private:
-    const vector<int> _numVec;
+    vector<int> _numVec;
 
     public:
     Sort(vector<int> a) : _numVec(a) {} ;
-    ~Sort() {delete [] _numVec;}
-
-    vector<int> bubbleSort() const;
+    ~Sort() {_numVec.clear();}
+    
+    void swap(int &, int &);
+    void display(vector<int> &);
+    bool bubbleSort(int , vector<int>&);
    //  vector<int> chooseSort() const;
    //  vector<int> quickSort() const;
 };

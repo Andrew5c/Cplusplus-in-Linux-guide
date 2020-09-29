@@ -94,6 +94,7 @@
 ---
 
 ### Algorithm in C++ :tada:
+- [记录遇到的一些问题](./code/sortAlgorithm/question.md)
 - [几个排序算法的实现](./code/sortAlgorithm/)
 - [二叉树](./doc/binaryTree.md)
 
