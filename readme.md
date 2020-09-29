@@ -1,9 +1,9 @@
-# My Coding Practice Wiki :earth_africa:
+# My Coding Wiki :earth_africa:
 
 
-### Environment configuration & Books
+### Environment set up & Books
 
-> 因为想要更彻底的了解与学习程序的编译与执行过程，这里选择在Linux环境下面coding和学习。建立这个仓库是想要在记录自己学习的过程中，更多的跟大家分享自己的总结、学习经历。共同学习，共同进步。
+> 因为想要更多的了解与学习代码的编译、执行过程，这里选择在Linux环境下面coding和学习。建立这个仓库是想要在记录自己学习的过程中，更多的跟大家分享自己的总结、学习经历。共同学习，共同进步。
 
 #### Environment :computer:
 - Ubuntu 16.04 + Visual Studio Code （使用vs code仅仅编写代码，编译还是在终端下面使用makefile）
@@ -11,14 +11,19 @@
     - 解压： `sudo dpkg -i your-.deb-file-name`
     - 然后就可以直接在Ubuntu中搜索到vs code
 
-- [一个很好的vim插件](https://github.com/luckxiang/vim) （基本的vim操作还是要熟悉一下的）
+- [一个很强的vim插件](https://github.com/luckxiang/vim) （基本的vim操作还是要熟悉一下的）
 
 #### Books :books:
+- <Essential C++>  --Stanley B. Lippman
+
+
+
 ---
+
+### Problem in Leetcode :trophy:
 
 *Talk is cheap, show me the code   ————Linus Torvalds*
 
-### Problem in Leetcode :trophy:
 - [直接循环求两数之和](code/LC/twoNumSum.cpp)
 - [无重复字符最长子串](code/LC/repetitionChar.cpp)
 - [整数反转（取值法）](code/LC/reverseINT.cpp)
@@ -100,8 +105,8 @@
 ---
 
 ### Use Make & CMake :alarm_clock:
-- [一个例子学习Makefile](./doc/make.md)
-- [继续学习CMake使用](./doc/cmake.md)
+- [两个例子学习Makefile](./doc/make.md)
+- [进阶CMake](./doc/cmake.md)
 
 ---
 
