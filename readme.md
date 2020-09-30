@@ -41,6 +41,8 @@
 ---
 
 ### Algorithm in C++ :tada:
+
+*Bad programmers worry about the code. Good programmers worry about data structures and their relationships.  ————Linus Torvalds*
 - [记录遇到的一些问题](./code/sortAlgorithm/question.md)
 - [几个排序算法的实现](./code/sortAlgorithm/)
 - [二叉树](./doc/binaryTree.md)
