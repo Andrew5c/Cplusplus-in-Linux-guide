@@ -40,6 +40,13 @@
 
 ---
 
+### Algorithm in C++ :tada:
+- [记录遇到的一些问题](./code/sortAlgorithm/question.md)
+- [几个排序算法的实现](./code/sortAlgorithm/)
+- [二叉树](./doc/binaryTree.md)
+
+---
+
 ### <Essential C++> study notes :books:
 
 > Just a note for myself, concise, no detail...
@@ -97,13 +104,6 @@
 
 ---
 
-### Algorithm in C++ :tada:
-- [记录遇到的一些问题](./code/sortAlgorithm/question.md)
-- [几个排序算法的实现](./code/sortAlgorithm/)
-- [二叉树](./doc/binaryTree.md)
-
----
-
 ### Use git :bicyclist:
 - [个人git使用总结](doc/git.md)
 
@@ -116,6 +116,9 @@
 ---
 
 ### Learn project from open source :couple:
+
+*Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program   ————Linus Torvalds*
+
 > 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，亲手实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
 
 - [终端版2048](https://github.com/plibither8/2048.cpp)
