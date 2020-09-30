@@ -18,6 +18,8 @@ class binaryTree;
 /*
 * 该类用来存储每个节点的实际值，以及连接左右两个子节点的链接
 * 使用类模板实现，能够存储多种数据类型的节点
+* 对于template类型参数，建议都将其视为【class类型】处理
+* 因此，参数传递时需要将他们声明为const reference，而不是by value
 */
 template<typename valType>
 class  btNode{
@@ -26,8 +28,12 @@ class  btNode{
     public:
 	    btNode();
         ~btNode();
+        // 在树中插入一个值
+        void insert_val(const valType &);
 
     private:
+        // 将valType类型参数视为class类型
+        // 因此，该数据成员需要参数初始化列表
         valType _val;
         // 记录节点值的重复次数
         int cnt;

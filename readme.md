@@ -1,5 +1,7 @@
 # My Coding Wiki :earth_africa:
 
+![](./doc/fig/cplus.png)
+
 
 ### Environment set up & Books
 
@@ -14,7 +16,7 @@
 - [一个很强的vim插件](https://github.com/luckxiang/vim) （基本的vim操作还是要熟悉一下的）
 
 #### Books :books:
-- <Essential C++>  --Stanley B. Lippman
+- [<Essential C++>](https://book.douban.com/subject/1215826/)  --Stanley B. Lippman
 
 
 
@@ -76,7 +78,7 @@
     - 运行时鉴定机制（RTTI）
 
 - [<Essential C++> chapter 6](./doc/Essential-chapter6.md)——以template进行编程
-
+    - 实现一个类模板（class template）
 
 ---
 
@@ -90,6 +92,8 @@
 - [重载运算符详细实现迭代类](code/operatorOverload/)
 - [函数对象的实现与应用](code/essential/functionCall.cpp)
 - [抽象类的建立与使用](code/abstractClass)
+- [用类模板实现常规二叉树](code/binaryTreeClass/)
+
 
 ---
 
