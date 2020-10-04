@@ -13,7 +13,7 @@
     - 解压： `sudo dpkg -i your-.deb-file-name`
     - 然后就可以直接在Ubuntu中搜索到vs code
 
-- [一个很强的vim插件](https://github.com/luckxiang/vim) （基本的vim操作还是要熟悉一下的）
+- [一个很强的vim插件](https://github.com/luckxiang/vim) （熟悉基本的vim操作）
 
 #### Books :books:
 - [<Essential C++>](https://book.douban.com/subject/1215826/)  --Stanley B. Lippman
@@ -107,7 +107,7 @@
 ---
 
 ### Use git :bicyclist:
-- [个人git使用总结](doc/git.md)
+- [git使用总结](doc/git.md)
 
 ---
 
