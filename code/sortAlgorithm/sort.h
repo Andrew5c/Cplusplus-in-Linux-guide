@@ -18,13 +18,18 @@ class Sort{
 
     public:
     Sort(vector<int> a) : _numVec(a) {} ;
-    ~Sort() {_numVec.clear();}
     
     void swap(int &, int &);
     void display(vector<int> &);
-    bool bubbleSort(int , vector<int>&);
-   //  vector<int> chooseSort() const;
-   //  vector<int> quickSort() const;
+    // 冒泡排序
+    // 时间 O(n2)，空间 O(1)
+    bool bubbleSort(int len, vector<int>& num);
+    // 选择排序
+    // 时间 O(n2)，空间 O(1)
+    bool chooseSort(int len, vector<int>& num);
+    // 快速排序
+    // 时间 O(n*log2n)，空间 O(n*log2n)
+    bool quickSort(vector<int>& num, int left, int right);
 };
 
 #endif

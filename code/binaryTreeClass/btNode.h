@@ -26,10 +26,18 @@ class  btNode{
     friend class binaryTree;
 
     public:
-	    btNode();
-        ~btNode();
+	    btNode(const valType &val) : _val(val) {
+            cnt = 1;
+            _lchild = _rchild = 0;
+        }
+        ~btNode() {
+            delete _lchild;
+            delete _rchild;
+        }
         // 在树中插入一个值
         void insert_val(const valType &);
+        void remove_root();
+        void remove_val(const valType&, btNode<valType> *);
 
     private:
         // 将valType类型参数视为class类型

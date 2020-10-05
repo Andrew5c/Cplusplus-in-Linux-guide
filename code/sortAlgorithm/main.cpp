@@ -20,11 +20,19 @@ int main() {
     cout << "origin num sequence : ";
     s.display(vec);
     
-
     if(s.bubbleSort(vec.size(), res)){
-        cout << "Bubble result : ";
+        cout << "Bubble sort result : ";
         s.display(res);
     }
-    
+
+    if(s.chooseSort(vec.size(), res)){
+        cout << "Choose sort result : ";
+        s.display(res);
+    }
+
+    if(s.quickSort()){
+        cout << "Quick sort result : ";
+        s.display(res);
+    }
     return 0;
 }
