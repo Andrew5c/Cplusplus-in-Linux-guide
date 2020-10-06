@@ -7,6 +7,9 @@ make clean
 cd ../abstractClass/ 
 make clean
 
+cd ../binaryTreeClass/
+make clean
+
 # back to main pwd
 cd ../..
 git add git.sh
