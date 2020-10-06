@@ -60,5 +60,14 @@ bool Sort::chooseSort(int len, vector<int> &num) {
 
 
 bool Sort::quickSort(vector<int>& num, int left, int right) {
-    
+    num.clear();
+    num.insert(num.begin(), _numVec.begin(), _numVec.end());
+    if(num.empty())
+        return false;
+
+
+
+    // 分治思想，进行递归
+    quickSort(num, );
+    quickSort();
 }

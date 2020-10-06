@@ -8,6 +8,9 @@
 #ifndef _BTNODE_H
 #define _BTNODE_H
 
+#include<iostream>
+using namespace std;
+
 // 类binaryTree存储一个指针，指向根节点
 // 配合其使用，让它成为当前类的friend
 // 需要对其进行前置声明
@@ -23,7 +26,7 @@ class binaryTree;
 */
 template<typename valType>
 class  btNode{
-    friend class binaryTree;
+    friend class binaryTree<valType>;
 
     public:
 	    btNode(const valType &val) : _val(val) {
@@ -35,9 +38,13 @@ class  btNode{
             delete _rchild;
         }
         // 在树中插入一个值
-        void insert_val(const valType &);
-        void remove_root();
-        void remove_val(const valType&, btNode<valType> *);
+        void insert_val(const valType&);
+        // 搬移左子树到右子节点的叶子节点
+        static void lchild_leaf(btNode*, btNode*);
+        // 从当前二叉树中移除某一个值
+        void remove_val(const valType&, btNode*&);
+        // 显示当前值
+        void display_val(btNode *pt, ostream &os = cout) const;
 
     private:
         // 将valType类型参数视为class类型
@@ -47,7 +54,6 @@ class  btNode{
         int cnt;
         btNode *_lchild;
         btNode *_rchild;
-
 };
 
 #endif

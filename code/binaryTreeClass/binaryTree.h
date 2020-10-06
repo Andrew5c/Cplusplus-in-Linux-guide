@@ -36,6 +36,13 @@ class binaryTree{
         void insert(const elemType&);
         // 在树中移除某个值
         void remove(const elemType&);
+        void remove_root();
+
+        // 二叉树的前序遍历方式
+        void preorder(btNode<elemType> *pt, ostream &os = cout) const;
+        void preorder(ostream &os = cout) const {
+            preorder(_root, os);
+        }
 
     private:
         // 指向根节点
