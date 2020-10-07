@@ -1,7 +1,7 @@
 objects = main.o btNode.o binaryTree.o
 cc = g++
 
-test:$(objects)
+test : $(objects)
 	$(cc) -o test $(objects)
 
 main.o : binaryTree.cpp binaryTree.h btNode.cpp btNode.h

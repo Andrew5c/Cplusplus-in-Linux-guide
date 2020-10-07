@@ -18,10 +18,10 @@
 template<typename elemType>
 class binaryTree{
     public:
-        binaryTree() : _root(0) {};
+        binaryTree();
         // copy constructor 
         binaryTree(const binaryTree&);
-        ~binaryTree() {clear();};
+        ~binaryTree() { clear(); } 
 
         // 类内定义内联函数和普通类中定义一样
         bool empty() const {return _root == 0;}

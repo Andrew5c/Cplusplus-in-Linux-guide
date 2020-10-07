@@ -10,10 +10,13 @@
 #include"binaryTree.h"
 
 using namespace std;
+
+
 int main() {
+
 	binaryTree<string> bt;
 
-	bt.insert("Piglet");
+    bt.insert("Piglet");
     bt.insert("Eeyore");
     bt.insert("Roo");
     bt.insert("Tigger");
@@ -21,17 +24,17 @@ int main() {
     bt.insert("Pooh");
     bt.insert("Kanga");
 
-    cout << "Preorder traversal:\n";
+    cout << "Preorder traversal:\n";  
     bt.preorder();
 
     //bt.remove("Piglet");
-    cout << "\n\npreorder traversal after Piglet removal:\n";
-    bt.preorder();
+    //cout << "\n\npreorder traversal after Piglet removal:\n";
+    //bt.preorder();
 
     //bt.remove("Eeyore");
-    cout << "\n\nPreorder traversal after Eeyore removal:\n";
-    bt.preorder();
-    cout << endl;
+    //cout << "\n\nPreorder traversal after Eeyore removal:\n";
+    //bt.preorder();
+    //cout << endl;
 
 	return 0;
 }

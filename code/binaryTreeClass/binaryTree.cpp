@@ -8,9 +8,14 @@
 #include"binaryTree.h"
 using namespace std;
 
+
+template<typename elemType>
+inline binaryTree<elemType>::binaryTree() : _root(0) {}
+
+
 // 对于模板类，注意在类外定义其成员函数的格式
 template<typename elemType>
-inline binaryTree<elemType>::binaryTree(const binaryTree& rhs){
+inline binaryTree<elemType>::binaryTree(const binaryTree &rhs){
     copy(_root, rhs._root);
 }
 

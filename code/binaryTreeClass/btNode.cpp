@@ -79,5 +79,5 @@ void btNode<valType>::remove_val(const valType &val, btNode *&prev) {
 
 template<typename valType>
 void btNode<valType>::display_val(btNode *pt, ostream &os) const {
-	os << pt->_val << ' ';
+	os << pt->_val << " ";
 }
