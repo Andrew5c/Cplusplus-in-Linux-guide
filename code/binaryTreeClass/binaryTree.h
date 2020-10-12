@@ -51,4 +51,6 @@ class binaryTree{
         void copy(btNode<elemType>* tar, btNode<elemType>* src);
         void clear(btNode<elemType>*);
 };
+
+
 #endif

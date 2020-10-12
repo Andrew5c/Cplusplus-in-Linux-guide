@@ -24,7 +24,7 @@ int main() {
     bt.insert("Pooh");
     bt.insert("Kanga");
 
-    cout << "Preorder traversal:\n";  
+    cout << "Preorder traversal:\n";
     bt.preorder();
 
     //bt.remove("Piglet");

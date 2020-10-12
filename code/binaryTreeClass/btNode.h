@@ -14,7 +14,7 @@ using namespace std;
 // 类binaryTree存储一个指针，指向根节点
 // 配合其使用，让它成为当前类的friend
 // 需要对其进行前置声明
-template <typename valType>
+template <typename elemType>
 class binaryTree;
 
 
@@ -30,7 +30,7 @@ class  btNode{
 
     public:
 	    btNode(const valType &val) : _val(val) {
-            cnt = 1;
+            _cnt = 1;
             _lchild = _rchild = 0;
         }
         ~btNode() {
@@ -51,7 +51,7 @@ class  btNode{
         // 因此，该数据成员需要参数初始化列表
         valType _val;
         // 记录节点值的重复次数
-        int cnt;
+        int _cnt;
         btNode *_lchild;
         btNode *_rchild;
 };

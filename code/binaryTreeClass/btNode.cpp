@@ -12,7 +12,7 @@ using namespace std;
 template<typename valType>
 void btNode<valType>::insert_val(const valType &val) {
 	if(val == _val){
-		cnt++;
+		_cnt++;
 		return;
 	}else if(val < _val){
 		// 左子节点不存在时，就new一个节点出来作为左子节点

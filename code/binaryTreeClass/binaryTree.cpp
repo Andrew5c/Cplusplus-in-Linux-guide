@@ -10,8 +10,8 @@ using namespace std;
 
 
 template<typename elemType>
-inline binaryTree<elemType>::binaryTree() : _root(0) {}
-
+inline binaryTree<elemType>::binaryTree() : _root(0) {
+}
 
 // 对于模板类，注意在类外定义其成员函数的格式
 template<typename elemType>
@@ -33,7 +33,7 @@ inline binaryTree<elemType>& binaryTree<elemType>::operator=(const binaryTree &r
 template<typename elemType>
 inline void binaryTree<elemType>::copy(btNode<elemType> *tar, btNode<elemType> *src) {
     tar->_val = src->_val;
-    tar->cnt = src->cnt;
+    tar->_cnt = src->_cnt;
     tar->_lchild = src->_lchild;
     tar->_rchild = src->_rchild;
 }
