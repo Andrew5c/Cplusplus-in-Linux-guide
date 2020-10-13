@@ -51,7 +51,7 @@
 
 ### <Essential C++> study notes :books:
 
-> Just a note for myself, concise, no detail...
+*Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program   ————Linus Torvalds*
 
 - [<Essential C++> Chapter 1](./doc/Essential-chapter1.md)——c++编程基础
     - c++简介
@@ -119,7 +119,8 @@
 
 ### Learn project from open source :couple:
 
-*Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program   ————Linus Torvalds*
+*Intelligence is the ability to avoid doing work, yet getting the work done.
+----Linus Torvalds*
 
 > 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，亲手实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
 
