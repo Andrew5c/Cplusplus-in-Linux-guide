@@ -31,6 +31,7 @@ class binaryTree{
                 _root = 0;
             }
         }
+        // 重载赋值运算符
         binaryTree& operator=(const binaryTree&);
         // 由最初的根节点开始插入值
         void insert(const elemType&);
@@ -48,7 +49,7 @@ class binaryTree{
         // 指向根节点
         btNode<elemType> *_root;
         // 复制子树
-        void copy(btNode<elemType>* tar, btNode<elemType>* src);
+        void copy(btNode<elemType>*& tar, btNode<elemType>* src);
         void clear(btNode<elemType>*);
 };
 

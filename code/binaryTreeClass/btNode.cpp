@@ -8,7 +8,6 @@
 #include"btNode.h"
 using namespace std;
 
-
 template<typename valType>
 void btNode<valType>::insert_val(const valType &val) {
 	if(val == _val){

@@ -28,14 +28,14 @@ inline binaryTree<elemType>& binaryTree<elemType>::operator=(const binaryTree &r
     return *this;
 }
 
-// 书中没有实现这个函数
-// 以下是笔者自己的尝试
+// 使用博文视点网站中提供的源码函数实现
 template<typename elemType>
-inline void binaryTree<elemType>::copy(btNode<elemType> *tar, btNode<elemType> *src) {
-    tar->_val = src->_val;
-    tar->_cnt = src->_cnt;
-    tar->_lchild = src->_lchild;
-    tar->_rchild = src->_rchild;
+void binaryTree<elemType>::copy(btNode<elemType> *&tar, btNode<elemType> *src) {
+    if(src){
+        tar = new btNode<elemType>(src->_val);
+        if(src->_lchild) copy(tar->_lchild, src->_lchild);
+        if(src->_rchild) copy(tar->_rchild, src->_rchild);
+    }
 }
 
 // 根节点存在的情况下，递归调用的清除每一个节点

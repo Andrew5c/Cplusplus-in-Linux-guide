@@ -17,6 +17,9 @@ using namespace std;
 template <typename elemType>
 class binaryTree;
 
+template <typename elemType>
+class btNode;
+
 
 /*
 * 该类用来存储每个节点的实际值，以及连接左右两个子节点的链接
@@ -37,6 +40,8 @@ class  btNode{
             delete _lchild;
             delete _rchild;
         }
+        const valType& value() const {return _val;}
+        int occurs() const {return _cnt;}
         // 在树中插入一个值
         void insert_val(const valType&);
         // 搬移左子树到右子节点的叶子节点

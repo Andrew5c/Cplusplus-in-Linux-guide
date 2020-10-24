@@ -16,7 +16,7 @@
 - [一个很强的vim插件](https://github.com/luckxiang/vim) （熟悉基本的vim操作）
 
 #### Books :books:
-- [<Essential C++>](https://book.douban.com/subject/1215826/)  --Stanley B. Lippman
+    - [<Essential C++>](http://www.broadview.com.cn/book/4437)  --Stanley B. Lippman
 
 
 
@@ -45,7 +45,7 @@
 *Bad programmers worry about the code. Good programmers worry about data structures and their relationships.  ————Linus Torvalds*
 - [记录遇到的一些问题](./code/sortAlgorithm/question.md)
 - [几个排序算法的实现](./code/sortAlgorithm/)
-- [二叉树](./doc/binaryTree.md)
+- [二叉树](./doc/Essential-chapter6.md)
 
 ---
 
