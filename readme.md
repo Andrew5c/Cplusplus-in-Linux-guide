@@ -16,7 +16,7 @@
 - [一个很强的vim插件](https://github.com/luckxiang/vim) （熟悉基本的vim操作）
 
 #### Books :books:
-    - [<Essential C++>](http://www.broadview.com.cn/book/4437)  --Stanley B. Lippman
+- [<Essential C++>]( http://www.broadview.com.cn/book/4437 )  --Stanley B. Lippman
 
 
 
