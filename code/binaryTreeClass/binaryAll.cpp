@@ -16,9 +16,6 @@ using namespace std;
 template <typename elemType>
 class binaryTree;
 
-template <typename elemType>
-class btNode;
-
 /*
 * 该类用来存储每个节点的实际值，以及连接左右两个子节点的链接
 * 使用类模板实现，能够存储多种数据类型的节点
@@ -34,21 +31,21 @@ class  btNode{
             _cnt = 1;
             _lchild = _rchild = 0;
 		}
-        ~btNode() {
-            delete _lchild;
-            delete _rchild;
-        }
         const valType& value() const {return _val;}
         int occurs() const {return _cnt;}
         // 在树中插入一个值
         void insert_val(const valType&);
 		// 从当前二叉树中移除某一个值
         void remove_val(const valType&, btNode*&);
+
+		// 遍历方式
+		void inorder(btNode* , ostream&) const;
+		void preorder(btNode* , ostream&) const;
+		void postorder(btNode* , ostream&) const;
+
         // 搬移左子树到右子节点的叶子节点
         static void lchild_leaf(btNode*, btNode*);
-        // 显示当前值
-        void display_val(btNode *pt, ostream &os = cout) const;
-
+        
     private:
         // 将valType类型参数视为class类型
         // 因此，该数据成员需要参数初始化列表
@@ -57,6 +54,8 @@ class  btNode{
         int _cnt;
         btNode *_lchild;
         btNode *_rchild;
+		// 显示当前值
+        void display_val(btNode*, ostream&) const;
 };
 
 template<typename valType>
@@ -109,9 +108,9 @@ void btNode<valType>::remove_val(const valType &val, btNode *&prev) {
 			return; // 也不在
 		_rchild->remove_val(val, _rchild);
 	}else {
-		// 找到这个等于要删除那个值的二叉树
+		// 找到要删除的那个值的节点
 		if(_rchild) {
-			// 将当前节点的父节点直接指向其右子节点，跳过当亲值，就相当于删除了
+			// 将当前节点的父节点直接指向其右子节点，跳过当前值，就相当于删除了
 			prev = _rchild;
 			if(_lchild) {
 				if(!prev->_lchild)
@@ -129,10 +128,40 @@ void btNode<valType>::remove_val(const valType &val, btNode *&prev) {
 
 template<typename valType>
 void btNode<valType>::display_val(btNode *pt, ostream &os) const {
-	os << pt->_val << " ";
+	os << pt->_val;
+	// 输出该值的个数
+	if(pt->_cnt > 1)
+		os << '(' << pt->_cnt << ')';
+	else
+		os << ' ';	
 }
 
+template<typename valType>
+void btNode<valType>::inorder(btNode<valType> *pt, ostream &os) const {
+    if(pt) {
+		if(pt->_lchild) preorder(pt->_lchild, os);
+        display_val(pt, os);
+        if(pt->_rchild) preorder(pt->_rchild, os);
+    }
+}
 
+template<typename valType>
+void btNode<valType>::preorder(btNode<valType> *pt, ostream &os) const {
+    if(pt) {
+        display_val(pt, os);
+        if(pt->_lchild) preorder(pt->_lchild, os);
+        if(pt->_rchild) preorder(pt->_rchild, os);
+    }
+}
+
+template<typename valType>
+void btNode<valType>::postorder(btNode<valType> *pt, ostream &os) const {
+    if(pt) {
+        if(pt->_lchild) preorder(pt->_lchild, os);
+        if(pt->_rchild) preorder(pt->_rchild, os);
+		display_val(pt, os);
+    }
+}
 
 // ---------------------------------------------------
 /*
@@ -144,9 +173,11 @@ template<typename elemType>
 class binaryTree{
     public:
         binaryTree();
-        // copy constructor 
+        // 拷贝构造函数，可以直接复制一个树到另一个树
         binaryTree(const binaryTree&);
         ~binaryTree() { clear();} 
+		// 重载赋值运算符
+        binaryTree& operator=(const binaryTree&);
 
         // 类内定义内联函数和普通类中定义一样
         bool empty() const {return _root == 0;}
@@ -155,9 +186,7 @@ class binaryTree{
                 clear(_root);
                 _root = 0;
             }
-        }
-        // 重载赋值运算符
-        binaryTree& operator=(const binaryTree&);
+		}
         // 由最初的根节点开始插入值
         void insert(const elemType&);
         // 在树中移除某个值
@@ -165,19 +194,26 @@ class binaryTree{
         void remove_root();
 
         // 二叉树的前序遍历方式
-        void preorder(btNode<elemType> *pt, ostream &os = cout) const;
-        void preorder(ostream &os = cout) const {
-            preorder(_root, os);
-        }
+        void preorder(ostream &os = *_current_os) {_root->preorder(_root, os);}
+		void inorder(ostream &os = *_current_os) {_root->inorder(_root, os);}
+		void postorder(ostream &os = *_current_os) {_root->postorder(_root, os);}
+		
+		static ostream* os() {return _current_os;}
 
     private:
         // 指向根节点
         btNode<elemType> *_root;
+		static ostream *_current_os;
+
         // 复制子树
         void copy(btNode<elemType>*& tar, btNode<elemType>* src);
 		// 将clear操作以重载的形式分为两个函数来进行操作
         void clear(btNode<elemType>*);
 };
+
+// 静态变量在类外定义
+template<typename elemType>
+ostream *binaryTree<elemType>::_current_os = &cout;
 
 template<typename elemType>
 inline binaryTree<elemType>::binaryTree() : _root(0) {
@@ -234,7 +270,7 @@ void binaryTree<elemType>::remove(const elemType &val) {
     if(_root){
         // 根节点的移除做特殊处理
         if(_root->_val == val)
-            _root->remove_root();
+            remove_root();
         else
             _root->remove_val(val, _root); 
     }
@@ -245,7 +281,7 @@ void binaryTree<elemType>::remove_root() {
     if(!_root)
         return;
     btNode<elemType> *tmp = _root;
-    if(!_root->_rchild) {
+    if(_root->_rchild) {
         // 右子节点存在
         // 将左子树作为右子树的叶子节点插入
         _root = _root->_rchild;
@@ -268,15 +304,6 @@ void binaryTree<elemType>::remove_root() {
     delete tmp;
 }
 
-template<typename elemType>
-void binaryTree<elemType>::preorder(btNode<elemType> *pt, ostream &os) const {
-    if(pt) {
-        display_val(pt, os);
-        if(pt->_lchild) preorder(pt->_lchild, os);
-        if(pt->_rchild) preorder(pt->_rchild, os);
-    }
-}
-
 // ----------------------------------------------
 int main() {
 
@@ -293,14 +320,14 @@ int main() {
     cout << "Preorder traversal:\n";
     bt.preorder();
 
-    //bt.remove("Piglet");
-    //cout << "\n\npreorder traversal after Piglet removal:\n";
-    //bt.preorder();
+    bt.remove("Piglet");
+    cout << "\n\npreorder traversal after Piglet remove:\n";
+    bt.preorder();
 
-    //bt.remove("Eeyore");
-    //cout << "\n\nPreorder traversal after Eeyore removal:\n";
-    //bt.preorder();
-    //cout << endl;
+    bt.remove("Eeyore");
+    cout << "\n\nPreorder traversal after Eeyore removal:\n";
+    bt.preorder();
+    cout << endl;
 
 	return 0;
 }

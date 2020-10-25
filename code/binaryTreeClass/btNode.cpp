@@ -8,6 +8,7 @@
 #include"btNode.h"
 using namespace std;
 
+
 template<typename valType>
 void btNode<valType>::insert_val(const valType &val) {
 	if(val == _val){
@@ -58,9 +59,9 @@ void btNode<valType>::remove_val(const valType &val, btNode *&prev) {
 			return; // 也不在
 		_rchild->remove_val(val, _rchild);
 	}else {
-		// 找到这个等于要删除那个值的二叉树
+		// 找到要删除的那个值的节点
 		if(_rchild) {
-			// 将当前节点的父节点直接指向其右子节点，跳过当亲值，就相当于删除了
+			// 将当前节点的父节点直接指向其右子节点，跳过当前值，就相当于删除了
 			prev = _rchild;
 			if(_lchild) {
 				if(!prev->_lchild)
@@ -78,5 +79,37 @@ void btNode<valType>::remove_val(const valType &val, btNode *&prev) {
 
 template<typename valType>
 void btNode<valType>::display_val(btNode *pt, ostream &os) const {
-	os << pt->_val << " ";
+	os << pt->_val;
+	// 输出该值的个数
+	if(pt->_cnt > 1)
+		os << '(' << pt->_cnt << ')';
+	else
+		os << ' ';	
+}
+
+template<typename valType>
+void btNode<valType>::inorder(btNode<valType> *pt, ostream &os) const {
+    if(pt) {
+		if(pt->_lchild) preorder(pt->_lchild, os);
+        display_val(pt, os);
+        if(pt->_rchild) preorder(pt->_rchild, os);
+    }
+}
+
+template<typename valType>
+void btNode<valType>::preorder(btNode<valType> *pt, ostream &os) const {
+    if(pt) {
+        display_val(pt, os);
+        if(pt->_lchild) preorder(pt->_lchild, os);
+        if(pt->_rchild) preorder(pt->_rchild, os);
+    }
+}
+
+template<typename valType>
+void btNode<valType>::postorder(btNode<valType> *pt, ostream &os) const {
+    if(pt) {
+        if(pt->_lchild) preorder(pt->_lchild, os);
+        if(pt->_rchild) preorder(pt->_rchild, os);
+		display_val(pt, os);
+    }
 }

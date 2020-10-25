@@ -19,9 +19,11 @@ template<typename elemType>
 class binaryTree{
     public:
         binaryTree();
-        // copy constructor 
+        // 拷贝构造函数，可以直接复制一个树到另一个树
         binaryTree(const binaryTree&);
-        ~binaryTree() { clear(); } 
+        ~binaryTree() { clear();} 
+		// 重载赋值运算符
+        binaryTree& operator=(const binaryTree&);
 
         // 类内定义内联函数和普通类中定义一样
         bool empty() const {return _root == 0;}
@@ -30,9 +32,7 @@ class binaryTree{
                 clear(_root);
                 _root = 0;
             }
-        }
-        // 重载赋值运算符
-        binaryTree& operator=(const binaryTree&);
+		}
         // 由最初的根节点开始插入值
         void insert(const elemType&);
         // 在树中移除某个值
@@ -40,16 +40,20 @@ class binaryTree{
         void remove_root();
 
         // 二叉树的前序遍历方式
-        void preorder(btNode<elemType> *pt, ostream &os = cout) const;
-        void preorder(ostream &os = cout) const {
-            preorder(_root, os);
-        }
+        void preorder(ostream &os = *_current_os) {_root->preorder(_root, os);}
+		void inorder(ostream &os = *_current_os) {_root->inorder(_root, os);}
+		void postorder(ostream &os = *_current_os) {_root->postorder(_root, os);}
+		
+		//static ostream* os() {return _current_os;}
 
     private:
         // 指向根节点
         btNode<elemType> *_root;
+		static ostream *_current_os;
+
         // 复制子树
         void copy(btNode<elemType>*& tar, btNode<elemType>* src);
+		// 将clear操作以重载的形式分为两个函数来进行操作
         void clear(btNode<elemType>*);
 };
 

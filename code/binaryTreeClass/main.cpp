@@ -34,7 +34,7 @@ int main() {
     //bt.remove("Eeyore");
     //cout << "\n\nPreorder traversal after Eeyore removal:\n";
     //bt.preorder();
-    //cout << endl;
+    cout << endl;
 
 	return 0;
 }

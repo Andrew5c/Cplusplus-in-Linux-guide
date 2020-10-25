@@ -9,6 +9,10 @@
 using namespace std;
 
 
+// 静态变量在类外定义
+template<typename elemType>
+ostream *binaryTree<elemType>::_current_os = &cout;
+
 template<typename elemType>
 inline binaryTree<elemType>::binaryTree() : _root(0) {
 }
@@ -64,7 +68,7 @@ void binaryTree<elemType>::remove(const elemType &val) {
     if(_root){
         // 根节点的移除做特殊处理
         if(_root->_val == val)
-            _root->remove_root();
+            remove_root();
         else
             _root->remove_val(val, _root); 
     }
@@ -75,7 +79,7 @@ void binaryTree<elemType>::remove_root() {
     if(!_root)
         return;
     btNode<elemType> *tmp = _root;
-    if(!_root->_rchild) {
+    if(_root->_rchild) {
         // 右子节点存在
         // 将左子树作为右子树的叶子节点插入
         _root = _root->_rchild;
@@ -96,13 +100,4 @@ void binaryTree<elemType>::remove_root() {
         _root = _root->_lchild;
     }
     delete tmp;
-}
-
-template<typename elemType>
-void binaryTree<elemType>::preorder(btNode<elemType> *pt, ostream &os) const {
-    if(pt) {
-        display_val(pt, os);
-        if(pt->_lchild) preorder(pt->_lchild, os);
-        if(pt->_rchild) preorder(pt->_rchild, os);
-    }
 }

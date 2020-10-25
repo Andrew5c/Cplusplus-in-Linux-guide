@@ -17,10 +17,6 @@ using namespace std;
 template <typename elemType>
 class binaryTree;
 
-template <typename elemType>
-class btNode;
-
-
 /*
 * 该类用来存储每个节点的实际值，以及连接左右两个子节点的链接
 * 使用类模板实现，能够存储多种数据类型的节点
@@ -35,22 +31,22 @@ class  btNode{
 	    btNode(const valType &val) : _val(val) {
             _cnt = 1;
             _lchild = _rchild = 0;
-        }
-        ~btNode() {
-            delete _lchild;
-            delete _rchild;
-        }
+		}
         const valType& value() const {return _val;}
         int occurs() const {return _cnt;}
         // 在树中插入一个值
         void insert_val(const valType&);
+		// 从当前二叉树中移除某一个值
+        void remove_val(const valType&, btNode*&);
+
+		// 遍历方式
+		void inorder(btNode* , ostream&) const;
+		void preorder(btNode* , ostream&) const;
+		void postorder(btNode* , ostream&) const;
+
         // 搬移左子树到右子节点的叶子节点
         static void lchild_leaf(btNode*, btNode*);
-        // 从当前二叉树中移除某一个值
-        void remove_val(const valType&, btNode*&);
-        // 显示当前值
-        void display_val(btNode *pt, ostream &os = cout) const;
-
+        
     private:
         // 将valType类型参数视为class类型
         // 因此，该数据成员需要参数初始化列表
@@ -59,6 +55,8 @@ class  btNode{
         int _cnt;
         btNode *_lchild;
         btNode *_rchild;
+		// 显示当前值
+        void display_val(btNode*, ostream&) const;
 };
 
 #endif
