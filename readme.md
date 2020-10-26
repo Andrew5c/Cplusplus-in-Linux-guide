@@ -13,7 +13,7 @@
     - 解压： `sudo dpkg -i your-.deb-file-name`
     - 然后就可以直接在Ubuntu中搜索到vs code
 
-- [一个很强的vim插件](https://github.com/luckxiang/vim) （熟悉基本的vim操作）
+- [一个很好用的vim插件](https://github.com/luckxiang/vim) （熟悉基本的vim操作）
 
 #### Books :books:
 - [<Essential C++>]( http://www.broadview.com.cn/book/4437 )  --Stanley B. Lippman
@@ -43,6 +43,7 @@
 ### Algorithm in C++ :tada:
 
 *Bad programmers worry about the code. Good programmers worry about data structures and their relationships.  ————Linus Torvalds*
+
 - [记录遇到的一些问题](./code/sortAlgorithm/question.md)
 - [几个排序算法的实现](./code/sortAlgorithm/)
 - [二叉树](./doc/Essential-chapter6.md)
@@ -101,7 +102,7 @@
 - [重载运算符详细实现迭代类](code/operatorOverload/)
 - [函数对象的实现与应用](code/essential/functionCall.cpp)
 - [抽象类的建立与使用](code/abstractClass)
-- [用类模板实现常规二叉树](code/binaryTreeClass/)
+- [类模板实现二叉树](code/binaryTreeClass/)
 
 
 ---
