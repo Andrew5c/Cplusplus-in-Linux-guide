@@ -163,7 +163,8 @@ void btNode<valType>::postorder(btNode<valType> *pt, ostream &os) const {
     }
 }
 
-// ---------------------------------------------------
+
+// ----------------------------------------------------
 /*
  * 该类存储一个指针，指向根节点
  * 这些成员函数以reference的形式进行传递，是为了避免elemType为class类型时，
@@ -171,6 +172,8 @@ void btNode<valType>::postorder(btNode<valType> *pt, ostream &os) const {
 */
 template<typename elemType>
 class binaryTree{
+    // friend ostream& operator<<(ostream&, const binaryTree<elemType>&);
+
     public:
         binaryTree();
         // 拷贝构造函数，可以直接复制一个树到另一个树
@@ -199,6 +202,7 @@ class binaryTree{
 		void postorder(ostream &os = *_current_os) {_root->postorder(_root, os);}
 		
 		static ostream* os() {return _current_os;}
+        ostream& print(ostream &os=*_current_os, void (binaryTree<elemType>::*traversal)(ostream&) const = &binaryTree<elemType>::inorder ) const;
 
     private:
         // 指向根节点
@@ -209,11 +213,29 @@ class binaryTree{
         void copy(btNode<elemType>*& tar, btNode<elemType>* src);
 		// 将clear操作以重载的形式分为两个函数来进行操作
         void clear(btNode<elemType>*);
+        // 该类模板自身的打印函数，以特定的遍历方式打印整棵树
+        
 };
 
-// 静态变量在类外定义
+// 静态变量在类外定义，并赋初始值
 template<typename elemType>
 ostream *binaryTree<elemType>::_current_os = &cout;
+
+template<typename elemType>
+ostream& binaryTree<elemType>::print(ostream &os, void (binaryTree::*traversal)(ostream&) const) const {
+    (this->*traversal)(os);
+    return os;
+}
+
+// ---------------------------------------------------
+// 以函数模板的形式实现output运算符，它不属于任何一个类
+// 但是可以作为binaryTree的友元函数
+template <typename elemType>
+inline ostream& operator<<(ostream &os, const binaryTree<elemType> &bt) {
+    os << "Tree : " << endl;
+    bt.print(os);
+    return os;
+}
 
 template<typename elemType>
 inline binaryTree<elemType>::binaryTree() : _root(0) {
@@ -328,6 +350,8 @@ int main() {
     cout << "\n\nPreorder traversal after Eeyore removal:\n";
     bt.preorder();
     cout << endl;
+
+    cout << bt << endl;
 
 	return 0;
 }
