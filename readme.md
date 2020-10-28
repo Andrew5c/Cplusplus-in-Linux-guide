@@ -93,6 +93,8 @@
     - 常量表达式作为模板参数
     - 成员模板函数
 
+- [<Essential C++> chapter 7](./doc/Essential-chapter7.md)——异常处理
+    - 抛出异常
 ---
 
 ### Code test in <Essential C++> :rocket:
