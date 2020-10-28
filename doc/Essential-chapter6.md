@@ -42,3 +42,56 @@ void foo(int *&p)
 - 如果没有，那就是对已有的对象赋值，调用的是赋值运算符。
 
 参考这篇博客：[https://www.cnblogs.com/wangguchangqing/p/6141743.html](https://www.cnblogs.com/wangguchangqing/p/6141743.html)
+
+
+### 以 function template 完成output运算符
+对输出运算符的重载，也可以使用函数模板来实现，为特定的类定义输出运算符
+```c++
+template <typename elemType>
+inline ostream& operator<<(ostream &os, const binaryTree<elemType> &bt) {
+    os << "Tree : " << endl;
+    bt.print(os);
+    return os;
+}
+```
+然后在需要类中将它声明为 **友元**。
+
+### 常量表达式 与 默认参数值
+注意，template参数不一定非得是某种类型（Type），也可以使用常量表达式作为template参数
+```c++
+template <int len, int beg_pos=1>
+class num_seq{
+    //...
+};
+```
+这里的默认参数和一般函数的默认参数一样，从左到右解析。
+
+全局作用域（global scope）内的 **函数** 及 **对象**，其地址也是一种常量表达式。
+因此，也可以作为template参数，比如：
+```c++
+template <void (*pf) (int pos, vector<int> &seq)>
+class num_seq{
+    public:
+    num_seq(int len, int beg_pos=1){
+        if(!pf)
+            //...
+        pf(len+beg_pos-1, _elems)
+    }
+    //...
+
+    private:
+    vector<int> _elems;
+};
+```
+这里的模板类中就可以传入某一个特定函数的地址，其调用方式为：
+```c++
+void fib(int pos, vector<int> &seq);
+num_seq<fib> my_fib(5);  // 产生5个长度的fib数列
+```
+
+### 成员模板函数 （[代码展示](../code/essential/member_template_function.cpp)）
+在非类模板中，同样可以定义一个带有template参数的成员函数，称为成员模板函数。
+当然，在一个类模板中，也可以再次定义成员模板函数，构成对类参数的二次 **剥离**.
+
+
+- 种种做法其实是在提高 类 的 **可复用性**

@@ -163,6 +163,15 @@ void btNode<valType>::postorder(btNode<valType> *pt, ostream &os) const {
     }
 }
 
+// ---------------------------------------------------
+// 以函数模板的形式实现output运算符，它不属于任何一个类
+// 但是可以作为binaryTree的友元函数
+template <typename elemType>
+inline ostream& operator<<(ostream &os, const binaryTree<elemType> &bt) {
+    os << "Tree : " << endl;
+    bt.print(os);
+    return os;
+}
 
 // ----------------------------------------------------
 /*
@@ -172,7 +181,7 @@ void btNode<valType>::postorder(btNode<valType> *pt, ostream &os) const {
 */
 template<typename elemType>
 class binaryTree{
-    // friend ostream& operator<<(ostream&, const binaryTree<elemType>&);
+    friend ostream& operator<<(ostream &os, const binaryTree<elemType> &bt);
 
     public:
         binaryTree();
@@ -224,16 +233,6 @@ ostream *binaryTree<elemType>::_current_os = &cout;
 template<typename elemType>
 ostream& binaryTree<elemType>::print(ostream &os, void (binaryTree::*traversal)(ostream&) const) const {
     (this->*traversal)(os);
-    return os;
-}
-
-// ---------------------------------------------------
-// 以函数模板的形式实现output运算符，它不属于任何一个类
-// 但是可以作为binaryTree的友元函数
-template <typename elemType>
-inline ostream& operator<<(ostream &os, const binaryTree<elemType> &bt) {
-    os << "Tree : " << endl;
-    bt.print(os);
     return os;
 }
 

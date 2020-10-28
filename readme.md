@@ -88,7 +88,10 @@
     - 运行时鉴定机制（RTTI）
 
 - [<Essential C++> chapter 6](./doc/Essential-chapter6.md)——以template进行编程
-    - 实现一个类模板（class template）
+    - 实现一个二叉树的类模板（class template）
+    - 函数模板实现output运算符
+    - 常量表达式作为模板参数
+    - 成员模板函数
 
 ---
 
@@ -104,7 +107,7 @@
 - [抽象类的建立与使用](code/abstractClass)
 - [类模板实现二叉树，分文件实现](code/binaryTreeClass/)
 - [类模板实现二叉树，在一个文件中实现](code/binaryTreeClass/binaryAll.cpp)
-
+- [成员模板函数实现](code/essential/member_template_function.cpp)
 
 ---
 
