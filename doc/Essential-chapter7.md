@@ -136,3 +136,18 @@ void doSomething()
 }
 ```
 这种嵌套的try块适合处理内部的异常处理者传递给外部的异常处理者的异常对象。
+
+### 局部资源管理
+在异常处理机制终结某个函数之前，c++保证，函数中的所有局部对象的destructor都会被调用。
+
+- `auto_ptr` 时标准库提供的class template，它会自动删除通过new表达式分配的对象。并且可以像使用一般指针一样使用 auto_ptr的对象。
+
+```c++
+#include <memory>
+auto_ptr<string> aps(new string("andrew"));
+string *ps = new string("hello");
+```
+
+
+### 标准异常
+

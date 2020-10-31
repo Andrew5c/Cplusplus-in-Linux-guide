@@ -95,6 +95,8 @@
 
 - [<Essential C++> chapter 7](./doc/Essential-chapter7.md)——异常处理
     - 抛出异常
+    - 局部资源管理
+    - 标准异常
 ---
 
 ### Code test in <Essential C++> :rocket:
