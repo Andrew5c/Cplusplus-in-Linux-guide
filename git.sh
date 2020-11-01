@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "delete object files..."
+echo "----------------------"
 # make clean for useless files
 cd code/operatorOverload/ 
 make clean
@@ -10,6 +12,8 @@ make clean
 cd ../binaryTreeClass/
 make clean
 
+echo "-------------------"
+echo "add files..."
 # back to main pwd
 cd ../..
 git add git.sh
@@ -34,3 +38,5 @@ fi
 
 git push origin master
 
+echo "----------------------"
+echo "push finished!"
