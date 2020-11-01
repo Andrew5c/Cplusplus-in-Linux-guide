@@ -140,14 +140,63 @@ void doSomething()
 ### 局部资源管理
 在异常处理机制终结某个函数之前，c++保证，函数中的所有局部对象的destructor都会被调用。
 
-- `auto_ptr` 时标准库提供的class template，它会自动删除通过new表达式分配的对象。并且可以像使用一般指针一样使用 auto_ptr的对象。
+- `auto_ptr` 是标准库提供的class template，它会自动删除通过new表达式分配的对象。并且可以像使用一般指针一样使用auto_ptr的对象。
 
 ```c++
 #include <memory>
+
+// 使用auto_ptr定义一个对象
 auto_ptr<string> aps(new string("andrew"));
 string *ps = new string("hello");
+if(aps->size() == ps->size()) {
+    //...
+}
 ```
 
 
-### 标准异常
+### 标准异常（[代码展示](../code/essential/exception.cpp)）
+以下语句
+```c++
+ptext = new vector<string>
+```
+会分配足够的内存，然后将 `vector<string>` 的默认构造函数作用于heap对象之上，然后再将对象地址设置给ptext。
+此时如果new表达式无法从程序的空闲空间中分配到足够的内存，它会抛出 `bad_alloc`异常对象。
 
+> 标准库中定义了一整套的异常体系，也就是笔记开始的那一张图。其根部是一个 `excepting` 的**抽象基类**。
+
+exception 声明了一个`what()`虚函数，会返回一个 `const char*`，用来表示被抛出异常的问题描述。
+
+本节的代码展示中，使用一个自定义的异常类，让其继承于exception，从而自己的代码也融入了标准的异常类体系，
+然后实现自己的what函数。
+
+**[部分代码]**
+```c++
+// 自定义异常类，继承标准异常
+class outRange : public exception {
+    public:
+    outRange(int index, int max):_index(index),_max(max){
+
+    }
+    int index() {return _index;}
+    int max() {return _max;}
+    
+    // 覆盖抽象基类中的虚函数，用来输出异常信息
+    const char* what();
+
+    private:
+    int _index;
+    int _max;
+};
+
+const char* outRange::what() {
+    ostringstream ex_msg;
+    static string msg;
+    ex_msg << "The num you input out of range: "
+            << _index << " exceeds maximum bound: "
+            << _max;
+    // 萃取出string对象
+    msg = ex_msg.str();
+    // 萃取出 const char* 表达式
+    return msg.c_str();
+}
+```
