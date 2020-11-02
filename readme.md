@@ -3,9 +3,11 @@
 ![](./doc/fig/cplus.png)
 
 
-### Environment set up & Books
 
-> 因为想要更多的了解与学习代码的编译、执行过程，这里选择在Linux环境下面coding和学习。建立这个仓库是想要在记录自己学习的过程中，更多的跟大家分享自己的总结、学习经历。共同学习，共同进步。
+> It is not bad to learn from others, but you must remove the parts which are useless or may have bad effects on you; while change and forge good parts and make them into your own.                             ————(America) Zhenning Yang 
+
+
+### Environment set up & Books
 
 #### Environment :computer:
 - Ubuntu 16.04 + Visual Studio Code （使用vs code仅仅编写代码，编译还是在终端下面使用makefile）
