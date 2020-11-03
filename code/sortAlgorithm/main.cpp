@@ -30,9 +30,9 @@ int main() {
         s.display(res);
     }
 
-    if(s.quickSort()){
-        cout << "Quick sort result : ";
-        s.display(res);
-    }
+    //if(s.quickSort()){
+    //    cout << "Quick sort result : ";
+    //    s.display(res);
+    //}
     return 0;
 }

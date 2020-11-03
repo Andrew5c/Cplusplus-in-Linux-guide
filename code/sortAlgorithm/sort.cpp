@@ -58,7 +58,7 @@ bool Sort::chooseSort(int len, vector<int> &num) {
     return true;
 }
 
-
+/*
 bool Sort::quickSort(vector<int>& num, int left, int right) {
     num.clear();
     num.insert(num.begin(), _numVec.begin(), _numVec.end());
@@ -71,3 +71,4 @@ bool Sort::quickSort(vector<int>& num, int left, int right) {
     quickSort(num, );
     quickSort();
 }
+*/

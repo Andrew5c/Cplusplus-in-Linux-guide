@@ -99,9 +99,23 @@ clean:
 ---
 
 ## 使用Cmake
+> 这里建议直接看参考文章中的第二个链接，写的非常好。这里只是简单做一下自己学习的笔记。
+
+Cmake，跨平台编译工具，比make更为高级，使用起来较为方便。用户需要编写CMakeList.txt文件来指定编译规则，然后cmake命令将该文件转化为make需要的makefile文件。最后再进行make的相关操作。
+
+- CMakeList.txt 的语法比较简单，由命令、注释、空格组成
+- 命令不区分大小写
+- `#`后面的内容被认为是注释
+- 参数之间用空格进行间隔
 
 
+### linux下使用cmake的步骤
+1. 编写cmake的配置文件CMakeList.txt，一般放在工程目录下面
+2. 执行命令`cmake PATH`来生成makefile文件。在linux平台下面通常在工程目录下面新建`build`文件夹，然后在build中执行`cmake ..`
+3. 在上面的build文件夹中使用`make`命令编译
 
+
+[一个例子](../code/sortAlgorithm/)--使用cmake重新编译
 
 
 ### 总结
@@ -111,6 +125,7 @@ clean:
 
 
 
-#### 参考链接
+#### 参考文章
 - [跟我一起写makefile v1.0](https://seisman.github.io/how-to-write-makefile/index.html)
+- [cmake入门实战](https://www.hahack.com/codes/cmake/)
 

@@ -29,7 +29,7 @@ class Sort{
     bool chooseSort(int len, vector<int>& num);
     // 快速排序
     // 时间 O(n*log2n)，空间 O(n*log2n)
-    bool quickSort(vector<int>& num, int left, int right);
+    // bool quickSort(vector<int>& num, int left, int right);
 };
 
 #endif
