@@ -87,9 +87,28 @@ clean:
 
 - [一个稍微复杂的例子](../code/abstractClass)
 
-### makefile文件名
+### makefile文件的命名
 - 最好使用`makefile`或者`Makefile`，这是make会去自动搜索的文件
-- 使用其他文件名时，比如`myMake`，可以使用`make -f myMake`命令
+- 使用其他文件名时，比如`myMake`，可以使用`make -f myMake`命令来指定特殊的文件
+
+
+
+**makefile在一些简单的工程下，可以人工手写拿下，但是当工程量比较大的时候，手写makefile比较繁琐。并且换了平台之后，makefile文件需要重新修改。这个时候，可以考虑使用Cmake工具**
+
+
+---
+
+## 使用Cmake
+
+
+
+
+
+### 总结
+- make， 自动化编译工具，用户需要编写makefile文件来指定编译规则和依赖文件，然后make工具读取makefile文件来进行批处理编译，但是对于大型工程，自行编写makefile文件较为繁琐。
+
+- Cmake，跨平台编译工具，比make更为高级，使用起来较为方便。用户需要编写CMakeList.txt文件来指定编译规则，然后cmake命令将该文件转化为make需要的makefile文件。最后再进行make的相关操作。
+
 
 
 #### 参考链接
