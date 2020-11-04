@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/sort/sort.cpp
+iostream
+-
+sort.h
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/sort/sort.h
+
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/sort/sort.h
+vector
+-
+

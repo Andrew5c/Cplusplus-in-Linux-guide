@@ -28,6 +28,7 @@ git add code/operatorOverload/
 git add code/abstractClass/
 git add code/binaryTreeClass/
 git add code/sortAlgorithm/
+git add code/cmakeDemo/
 
 if (($# == 0))
 then

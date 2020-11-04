@@ -1,0 +1,6 @@
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/build/CMakeFiles/rebuild_cache.dir
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/build/CMakeFiles/demo.dir
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/build/CMakeFiles/edit_cache.dir
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/build/sort/CMakeFiles/rebuild_cache.dir
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/build/sort/CMakeFiles/sort1.dir
+/home/anc/qs/my-Leetcode/code/cmakeDemo/demo1/build/sort/CMakeFiles/edit_cache.dir
