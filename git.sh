@@ -29,6 +29,7 @@ git add code/abstractClass/
 git add code/binaryTreeClass/
 git add code/sortAlgorithm/
 git add code/cmakeDemo/
+git add code/DSAA/
 
 if (($# == 0))
 then

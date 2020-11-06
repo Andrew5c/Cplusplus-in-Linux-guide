@@ -20,7 +20,7 @@
 #### Books :books:
 - [<Essential C++>]( http://www.broadview.com.cn/book/4437 )  --Stanley B. Lippman
 
-
+- [<Data Structures,Algorithms,and Applications in C++>](https://book.douban.com/subject/26421141/)   --Sartaj Sahni
 
 ---
 
@@ -115,6 +115,12 @@
 - [类模板实现二叉树，在一个文件中实现](code/binaryTreeClass/binaryAll.cpp)
 - [成员模板函数实现](code/essential/member_template_function.cpp)
 - [异常处理](code/essential/exception.cpp)
+
+
+---
+
+### Code test in <Data Structures,Algorithms,and Applications in C++> :rocket:
+- [二维数组的动态内存分配](code/DSAA/make2dArray.cpp)
 
 
 ---
