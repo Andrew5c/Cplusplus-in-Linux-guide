@@ -27,6 +27,7 @@ git add code/essential/*.cpp *.h
 git add code/operatorOverload/
 git add code/abstractClass/
 git add code/binaryTreeClass/
+git add code/binaryTreeClass-2/
 git add code/sortAlgorithm/
 git add code/cmakeDemo/
 git add code/DSAA/

@@ -7,7 +7,7 @@
 
 #include<iostream>
 #include<string>
-#include"binaryTree.h"
+#include"binaryTree.hpp"
 
 using namespace std;
 
@@ -27,13 +27,13 @@ int main() {
     cout << "Preorder traversal:\n";
     bt.preorder();
 
-    //bt.remove("Piglet");
-    //cout << "\n\npreorder traversal after Piglet removal:\n";
-    //bt.preorder();
+    bt.remove("Piglet");
+    cout << "\n\npreorder traversal after Piglet removal:\n";
+    bt.preorder();
 
-    //bt.remove("Eeyore");
-    //cout << "\n\nPreorder traversal after Eeyore removal:\n";
-    //bt.preorder();
+    bt.remove("Eeyore");
+    cout << "\n\nPreorder traversal after Eeyore removal:\n";
+    bt.preorder();
     cout << endl;
 
 	return 0;

@@ -111,8 +111,8 @@
 - [重载运算符详细实现迭代类](code/operatorOverload/)
 - [函数对象的实现与应用](code/essential/functionCall.cpp)
 - [抽象类的建立与使用](code/abstractClass)
-- [类模板实现二叉树，分文件实现](code/binaryTreeClass/)
-- [类模板实现二叉树，在一个文件中实现](code/binaryTreeClass/binaryAll.cpp)
+- [类模板实现二叉树，分文件实现](code/binaryTreeClass-2/)
+- [类模板实现二叉树，在一个文件中实现](code/binaryTreeClass/tree.cpp)
 - [成员模板函数实现](code/essential/member_template_function.cpp)
 - [异常处理](code/essential/exception.cpp)
 

@@ -1,4 +1,4 @@
-## makefile文件的编写（[makefile示例](../code/operatorOverload/makefile)）
+## makefile文件的编写
 
 #### 程序编译的流程
 源文件（编译） -> 目标文件（链接） -> 目标文件
