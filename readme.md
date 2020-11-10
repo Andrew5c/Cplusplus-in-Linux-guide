@@ -117,10 +117,19 @@
 - [异常处理](code/essential/exception.cpp)
 
 
+
+---
+
+### <Data Structures,Algorithms,and Applications in C++> study notes :books:
+- [DSAA Chapter-1](./doc/DSAA-chapter1.md)——C++回顾
+
+
+
 ---
 
 ### Code test in <Data Structures,Algorithms,and Applications in C++> :rocket:
 - [二维数组的动态内存分配](code/DSAA/make2dArray.cpp)
+- [递归实现数组元素全排列](./code/DSAA/permutation.cpp)
 
 
 ---
