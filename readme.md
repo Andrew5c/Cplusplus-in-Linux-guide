@@ -135,7 +135,7 @@
 ---
 
 ### Use git :bicyclist:
-- [git使用总结](doc/git.md)
+- [我的Git指南](doc/git.md)
 
 ---
 

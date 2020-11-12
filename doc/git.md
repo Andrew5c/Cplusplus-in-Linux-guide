@@ -62,9 +62,12 @@ git push...
 	- 注意这个时候**本地的版本已经落后远程仓库的版本**了，直接进行push操作的话，是无法成功的。因为我主要想回退到上一个版本，因此需要强制远程仓库与本地版本保持一致，push的时候需要加上`-f`参数，也就是`git push -f origin master`
 
 
-- HEAD指针的作用
+- `tag` 与 `branch` 的区别
+	- tag 是某一次commit的标签，是为了发布某一个版本用的。
+	- branch 是新建的一条开发分支，他是一个由n多个commit组成的时间线。
 
 
-- git tag 与 git branch 的区别
 
-
+- 参考资料
+	- [Pro Git(中文版)](https://gitee.com/progit/)
+	- [Git教程——廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/896043488029600)
