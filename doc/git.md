@@ -60,3 +60,11 @@ git push...
 		- `--soft`：不删除工作空间改动代码，撤销commit，不撤销git add
 		- `HEAD^^^`：后面的heat符号个数可以使用`HEAD～n`替代，表示回退到上n个版本
 	- 注意这个时候**本地的版本已经落后远程仓库的版本**了，直接进行push操作的话，是无法成功的。因为我主要想回退到上一个版本，因此需要强制远程仓库与本地版本保持一致，push的时候需要加上`-f`参数，也就是`git push -f origin master`
+
+
+- HEAD指针的作用
+
+
+- git tag 与 git branch 的区别
+
+
