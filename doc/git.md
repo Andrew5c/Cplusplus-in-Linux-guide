@@ -44,7 +44,7 @@
    正常直接在本地删除文件夹，然后正常add、commit、push就可以。
 
 - 删除远程仓库的文件夹，保留本地
-```
+```git
 git pull origin master
 git rm -r --cached file-NAME // cached选项不会把本地文件夹删除
 git commit ...
@@ -60,6 +60,27 @@ git push...
 		- `--soft`：不删除工作空间改动代码，撤销commit，不撤销git add
 		- `HEAD^^^`：后面的heat符号个数可以使用`HEAD～n`替代，表示回退到上n个版本
 	- 注意这个时候**本地的版本已经落后远程仓库的版本**了，直接进行push操作的话，是无法成功的。因为我主要想回退到上一个版本，因此需要强制远程仓库与本地版本保持一致，push的时候需要加上`-f`参数，也就是`git push -f origin master`
+
+- **tag**
+用在给仓库历史中的某一个提交打上标签，以示重要。一般人们使用这个功能来标记发布节点（v1.0, v2.0）等。
+    - 列出标签: `git tag`，列出当前分支的所有tag？
+    - 创建标签
+        - 附注标签: `git tag -a v1.0 -m "msg of tag"`
+        - 轻量标签: `git tag v1.4`
+    - 共享标签（推送到远程），这有点类似于共享远程分支。
+        - 推送特定的某一个标签: `git push origin v1.4`
+        - 推送所有标签: `git push origin --tags`
+    - 删除标签 
+        - 本地删除: `git tag -d v1.4`
+        - 远程删除: `git push origin --delete v1.4`
+
+
+
+一般我们克隆一个项目下来之后，可能需要根据原开发者发布的tag，比如v1.0, v2.0等，在某一个tag的基础之上创建新的开发分支，然后进行自己的开发。
+- 创建分支：`git branch new_branch_name tag`
+- 切换到分支：`git checkout new_branch_name`
+- 提交分支到远程仓库：`git push origin new_branch_name`
+
 
 
 - `tag` 与 `branch` 的区别
