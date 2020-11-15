@@ -13,7 +13,7 @@
 - Ubuntu 16.04 + Visual Studio Code （使用vs code仅仅编写代码，编译还是在终端下面使用makefile）
     - [vs code 下载到本地](https://code.visualstudio.com/Download)
     - 解压： `sudo dpkg -i your-.deb-file-name`
-    - 然后就可以直接在Ubuntu中搜索到vs code
+    - 然后就可以直接在Ubuntu中搜索到VS code
 
 - [一个很好用的vim插件](https://github.com/luckxiang/vim) （熟悉基本的vim操作）
 
@@ -115,7 +115,6 @@
 - [类模板实现二叉树，在一个文件中实现](code/binaryTreeClass/tree.cpp)
 - [成员模板函数实现](code/essential/member_template_function.cpp)
 - [异常处理](code/essential/exception.cpp)
-
 
 
 ---
