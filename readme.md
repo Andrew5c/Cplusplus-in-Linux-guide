@@ -7,7 +7,7 @@
 > It is not bad to learn from others, but you must remove the parts which are useless or may have bad effects on you; while change and forge good parts and make them into your own.                             ————(America) Zhenning Yang 
 
 
-### Environment set up & Books
+### Environment setup & Books
 
 #### Environment :computer:
 - Ubuntu 16.04 + Visual Studio Code （使用vs code仅仅编写代码，编译还是在终端下面使用makefile）
@@ -149,7 +149,7 @@
 *Intelligence is the ability to avoid doing work, yet getting the work done.
 ----Linus Torvalds*
 
-> 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，亲手实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
+> 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
 
 - [终端版2048](https://github.com/plibither8/2048.cpp)
 - [蒙特卡洛法辅助通关2048](https://github.com/xtrp/jupiter)
