@@ -32,6 +32,9 @@ git add code/sortAlgorithm/
 git add code/cmakeDemo/
 git add code/DSAA/
 
+# add the DIY 2048 project
+git add fun_2048/
+
 if (($# == 0))
 then
  git commit -m "modify files in LINUX"

@@ -150,5 +150,9 @@
 
 > 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
 
-- [终端版2048](https://github.com/plibither8/2048.cpp)
-- [蒙特卡洛法辅助通关2048](https://github.com/xtrp/jupiter)
+- [2048 step by step](./fun_2048/)
+
+
+- 参考开源项目
+    - [终端版2048](https://github.com/plibither8/2048.cpp)
+    - [蒙特卡洛法辅助通关2048](https://github.com/xtrp/jupiter)
