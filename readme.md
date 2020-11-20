@@ -131,6 +131,9 @@
 
 
 ---
+> Luck is where opportunity meets preparation. ——Seneca 
+
+
 
 ### Use git :bicyclist:
 - [我的Git指南](doc/git.md)
