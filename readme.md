@@ -3,8 +3,9 @@
 ![](./doc/fig/cplus.png)
 
 
+*Luck is where opportunity meets preparation. ——Seneca* 
 
-> It is not bad to learn from others, but you must remove the parts which are useless or may have bad effects on you; while change and forge good parts and make them into your own.                             ————(America) Zhenning Yang 
+
 
 
 ### Environment setup & Books
@@ -130,8 +131,10 @@
 - [递归实现数组元素全排列](./code/DSAA/permutation.cpp)
 
 
----
-> Luck is where opportunity meets preparation. ——Seneca 
+
+--
+
+*It is not bad to learn from others, but you must remove the parts which are useless or may have bad effects on you; while change and forge good parts and make them into your own.  ——(America) Zhenning Yang*
 
 
 
@@ -149,7 +152,7 @@
 ### Learn project from open source :couple:
 
 *Intelligence is the ability to avoid doing work, yet getting the work done.
-----Linus Torvalds*
+——Linus Torvalds*
 
 > 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
 
