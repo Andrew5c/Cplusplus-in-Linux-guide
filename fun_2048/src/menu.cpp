@@ -1,4 +1,6 @@
 #include"menu.hpp"
+#include"global.hpp"
+
 #include<iostream>
 #include<array>
 
@@ -45,7 +47,8 @@ namespace {
         case '4':
             flagMenu[FLAG_EXIT_GAME] = true;
             break;
-        
+
+        // 如果用户输入错误，则继续循环，直到读取到正确的输入
         default:
             flagInputError = true;
             break;
@@ -54,11 +57,13 @@ namespace {
 
     // 整个系统就是对这个函数进行无限循环
     bool oneLoop() {
-        // 首先重置所有标志位
+        // 首先重置所有标志位 ->0
         flagMenu = statusFlag{};
 
-        //cleanScreen();
-
+        cleanScreen();
+        DrawAlways(std::cout, 
+                   DataSuppliment(flagInputError, 
+                                  Game::Graphics::Menu::mainMenuGraphics));
 
         // 读取用户输入并处理
         receiveInputFlags(std::cin);

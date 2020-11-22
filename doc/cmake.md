@@ -76,6 +76,9 @@ aux_source_directory(. DIR_LIB_SRCS)
 add_library(sort1 ${DIR_LIB_SRCS})
 ```
 
+#### 常用命令总结
+- include_directories()  追加目录到当前项目
+- target_include_directories  上面命令的新版本
 
 ### 总结
 - make， 自动化编译工具，用户需要编写makefile文件来指定编译规则和依赖文件，然后make工具读取makefile文件来进行批处理编译，但是对于大型工程，自行编写makefile文件较为繁琐。
@@ -87,8 +90,10 @@ add_library(sort1 ${DIR_LIB_SRCS})
 ### 参考文章
 - [cmake入门实战](https://www.hahack.com/codes/cmake/)
 
----
 
+
+
+---
 ## 静态、动态链接库
 
 ### 静态链接库

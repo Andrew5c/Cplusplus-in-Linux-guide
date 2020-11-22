@@ -33,7 +33,10 @@ git add code/cmakeDemo/
 git add code/DSAA/
 
 # add the DIY 2048 project
-git add fun_2048/
+git add fun_2048/src/
+git add fun_2048/2048_note.md 
+git add fun_2048/CMakeLists.txt 
+
 
 if (($# == 0))
 then
