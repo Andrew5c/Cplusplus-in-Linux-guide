@@ -61,8 +61,9 @@ namespace {
         flagMenu = statusFlag{};
 
         cleanScreen();
-        DrawAlways(std::cout, 
-                   DataSuppliment(flagInputError, 
+        drawAlways(std::cout, Game::Graphics::asciiArt2048);
+        drawAlways(std::cout, 
+                   dataSuppliment(flagInputError, 
                                   Game::Graphics::Menu::mainMenuGraphics));
 
         // 读取用户输入并处理
