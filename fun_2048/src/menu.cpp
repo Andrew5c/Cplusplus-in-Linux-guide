@@ -64,7 +64,7 @@ namespace {
         drawAlways(std::cout, Game::Graphics::asciiArt2048);
         drawAlways(std::cout, 
                    dataSuppliment(flagInputError, 
-                                  Game::Graphics::Menu::mainMenuGraphics));
+                                  Game::Graphics::Menu::mainMenuGraphicsOverlay));
 
         // 读取用户输入并处理
         receiveInputFlags(std::cin);
