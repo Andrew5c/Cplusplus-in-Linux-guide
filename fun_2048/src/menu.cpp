@@ -64,7 +64,9 @@ namespace {
         flagMenu = statusFlag{};
 
         cleanScreen();
+        
         drawAlways(std::cout, Game::Graphics::asciiArt2048);
+        // dataSuppliment是一个模板函数，第二个参数直接提供函数名字即可
         drawAlways(std::cout, 
                    dataSuppliment(flagInputError, 
                                   Game::Graphics::Menu::mainMenuGraphicsOverlay));

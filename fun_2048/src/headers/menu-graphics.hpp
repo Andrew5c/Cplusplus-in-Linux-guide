@@ -9,7 +9,7 @@ namespace Game
     {
         namespace Menu
         {
-            std::string mainMenuGraphicsOverlay(bool);
+            std::string mainMenuGraphicsOverlay(bool input_error);
         } // namespace Menu
     } // namespace Graphics
 } // namespace Game

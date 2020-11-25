@@ -9,12 +9,12 @@ namespace Game
         std::string asciiArt2048() {
             // TODO: this give a good title card
             constexpr auto title_card_2048 = R"(2048)";
-            std::ostringstream title_card_richtext;
+            std::ostringstream str_os;
             // TODO: add the color and fonts
-            title_card_richtext << title_card_2048;
-            title_card_richtext << "\n\n\n";
+            str_os << title_card_2048;
+            str_os << "\n\n\n";
             // convert to string class
-            return title_card_richtext.str();
+            return str_os.str();
         }
     } // namespace Graphics
     

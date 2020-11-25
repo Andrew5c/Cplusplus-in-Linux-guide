@@ -7,9 +7,26 @@
 
 template <typename T>
 void drawAlways(std::ostream &os, T f) {
-    // TODO：这里把形参直接当做函数来执行？
+    // TODO：这里把形参直接当做函数来执行？他与函数指针有什么区别？
     os << f();
 }
+
+// 当条件满足的时候，后面就一直执行
+template <typename T>
+void drawOnlyWhen(std::ostream &os, bool trigger, T f) {
+    if(trigger)
+        drawAlways(os, f);
+}
+
+// 当条件满足的时候，仅执行一次，然后等待下一次的条件满足
+template <typename T>
+void drawOneTimeFlag(std::ostream &os, bool &trigger, T f) {
+    if(trigger) {
+        drawAlways(os, f);
+        trigger = !trigger;
+    }
+}
+
 
 // 结构体模板，保存需要的数据
 template <typename suppliment_t>
