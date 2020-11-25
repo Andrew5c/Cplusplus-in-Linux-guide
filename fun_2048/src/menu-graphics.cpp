@@ -19,6 +19,7 @@ namespace Game
                 return str_os.str();
             }
 
+            // TODO：以后考虑增加“清除所有游戏记录”选项
             std::string mainMenuOptionsPrompt() {
                 const auto menu_list_text = {"1. Play a new game",
                                              "2. Continue previous game",
@@ -58,8 +59,6 @@ namespace Game
                 std::ostringstream str_os;
                 drawAlways(str_os, mainMenuTitlePrompt);
                 drawAlways(str_os, mainMenuOptionsPrompt);
-
-                // TODO: prompt when there is an error input
                 drawOnlyWhen(str_os, input_error, inputMenuErrorPrompt);
                 drawAlways(str_os, inputMenuPrompt);
                 // return a string object
