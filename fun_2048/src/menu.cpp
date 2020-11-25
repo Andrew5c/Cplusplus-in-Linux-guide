@@ -1,5 +1,8 @@
-#include"menu.hpp"
-#include"global.hpp"
+#include "menu.hpp"
+#include "global.hpp"
+#include "game.hpp"
+#include "game-graphics.hpp"
+#include "menu-graphics.hpp"
 
 #include<iostream>
 #include<array>

@@ -5,7 +5,7 @@
 	> Created Time: 2020年11月19日 星期四 10时25分34秒
  ************************************************************************/
 
-#include"menu.hpp"
+#include "menu.hpp"
 
 int main() {
 	Menu::startMenu();

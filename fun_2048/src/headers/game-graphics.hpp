@@ -2,6 +2,8 @@
 #define __GAME_GRAPHICS
 
 #include <string>
+
+
 namespace Game
 {
     namespace Graphics
