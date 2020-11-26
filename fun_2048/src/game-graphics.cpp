@@ -1,6 +1,8 @@
 #include "game-graphics.hpp"
 #include <sstream>
-
+/*
+1. 绘制游戏启动界面
+*/
 
 namespace Game
 {

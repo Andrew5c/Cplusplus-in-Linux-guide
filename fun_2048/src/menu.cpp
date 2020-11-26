@@ -6,6 +6,9 @@
 
 #include<iostream>
 #include<array>
+/*
+1. 作为整个游戏的入口。并定义游戏的主循环。
+*/
 
 
 // 无名的 命名空间，让其中包含的代码只在本文件可用
@@ -58,6 +61,24 @@ namespace {
         }
     }
 
+    void processMainMenu() {
+        if(flagMenu[FLAG_START_GAME]) {
+            Game::startGame();
+        }
+        if(flagMenu[FLAG_CONTINUE_GAME]) {
+            // TODO:继续之前存档的游戏
+            // continueGame();
+        }
+        if(flagMenu[FLAG_DISPLAY_HIGHSCORES]) {
+            // TODO:显示游戏最高分，可能需要游戏过程中后台持续记录游戏的最高分
+            // showScores();
+        }
+        if(flagMenu[FLAG_EXIT_GAME]) {
+            exit(EXIT_SUCCESS);
+        }
+    }
+
+
     // 整个系统就是对这个函数进行无限循环
     bool oneLoop() {
         // 首先重置所有标志位 ->0
@@ -73,7 +94,7 @@ namespace {
 
         // 读取用户输入并处理
         receiveInputFlags(std::cin);
-        //processMainMenu();
+        processMainMenu();
 
         // 给顶层调用返回错误标志位
         // 如果用户没有选择错误，就一直循环下去
