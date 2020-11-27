@@ -4,6 +4,7 @@
 #include<iosfwd>
 #include<string>
 
+using ull = unsigned long long;
 
 template <typename T>
 void drawAlways(std::ostream &os, T f) {

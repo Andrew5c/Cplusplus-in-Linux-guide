@@ -18,6 +18,15 @@ namespace Game
             // convert to string class
             return str_os.str();
         }
+
+        std::string gameNoSavePrompt() {
+            constexpr auto no_save_text = 
+                "No saved game found. Starting a new game...";
+            constexpr auto sp = "  ";
+            std::ostringstream str_os;
+            str_os << sp << no_save_text << "\n\n";
+            return str_os.str();
+        }
     } // namespace Graphics
     
 } // namespace Game
