@@ -7,4 +7,8 @@ namespace Game
 
     }
     gamebo
+
+    bool addTileOnGameBoard(gameBoard &gb) {
+        return addTileOneGameBoardDataArray(gb.gbda);
+    }
 } // namespace Game

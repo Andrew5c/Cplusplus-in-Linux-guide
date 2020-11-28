@@ -18,6 +18,7 @@ namespace Game
     struct gameBoard
     {
         using tile_data_array_t = std::vector<tile_t>;
+        // size_t可以看做是一个unsigned int的数据类型
         using gameboard_data_tuple_t = std::tuple<size_t, tile_data_array_t>;
 
         gameboard_data_tuple_t gbda;

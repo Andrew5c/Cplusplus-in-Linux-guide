@@ -88,6 +88,8 @@ namespace {
         
         drawAlways(std::cout, Game::Graphics::asciiArt2048);
         // dataSuppliment是一个模板函数，第二个参数直接提供函数名字即可
+        // 游戏开始，给出游戏选项，并提示用户输入
+        // 如果输入错误，那么根据循环，就再次清屏，提示错误，重新选择
         drawAlways(std::cout, 
                    dataSuppliment(flagInputError, 
                                   Game::Graphics::Menu::mainMenuGraphicsOverlay));

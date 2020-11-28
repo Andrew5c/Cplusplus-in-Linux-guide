@@ -49,9 +49,10 @@ namespace Game
             }
 
             void endlessLoop() {
+                // TODO:添加游戏中途退出按钮
                 while(1) {
                     oneLoop();
-                } 
+                }
             }
 
             enum class newGameFlag {newGameFlagNull, noPreGameSave};

@@ -2,6 +2,8 @@
 #define __GAME_H
 
 namespace Game {
+    // 这个结构体被定义在 gameboard.cpp
+    // TODO:这里算是对变量的外部声明吗？
     struct gameBoard;
     
     enum class playGameFlag {brandNewGame, continuePreGame};
