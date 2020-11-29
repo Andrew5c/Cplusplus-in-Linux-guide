@@ -22,7 +22,8 @@ namespace Game
         using gameboard_data_tuple_t = std::tuple<size_t, tile_data_array_t>;
 
         gameboard_data_tuple_t gbda;
-        bool win{};
+        // TODO:推测这个win和competition mode有关系，暂时取消
+        // bool win{};
         bool moved{true};
         ull score{};
         ull largestTile{2};

@@ -13,6 +13,7 @@ namespace Game
 {
     namespace
     {
+        // 全局变量定义
         enum direstion {UP, DOWN, RIGHT, LEFT};
         enum gameStatusFlag { FLAG_WIN,
                               FLAG_END_GAME,
@@ -24,7 +25,7 @@ namespace Game
         // TODO: 当前游戏会话的数据抽象
         // (best_score, game_status, game_play_board)
         using current_game_session_t = std::tuple<ull, game_status_t, gameBoard>;
-        // 对上面游戏会话的抽象数据中进行索引
+        // 对上面游戏会话的抽象数据进行索引
         enum tuple_cgs_t_idx {IDX_BESTSCORE,
                               IDX_GAMESTATUS,
                               IDX_GAMEBOARD
@@ -33,8 +34,41 @@ namespace Game
         // 当前游戏会话的进一步数据抽象
         using bool_current_game_session_t = std::tuple<bool, current_game_session_t >;
         
+        // 游戏状态，游戏面板共同打包
+        using game_status_board_t = std::tuple<game_status_t, gameBoard>;
+        
+        // -----------------------------------------------------
+
+        // 游戏主逻辑
+        game_status_board_t processGameLogic(game_status_board_t gsgb) {
+
+
+        }
+
+
+        // 对最终游戏数据进行收集、整理、打包
+        Graphics::scoreboard_display_data_t 
+        makeScoreboardDisplayData(ull best_score, gameBoard gb) {
+            const auto game_board_score = gb.score;
+            const auto temp_best_score = (best_score > game_board_score) ? best_score : game_board_score;
+            const auto move_count = moveCountOnGameBoard(gb);
+            
+            const auto scdd = std::make_tuple(std::to_string(game_board_score), 
+                    std::to_string(temp_best_score), std::to_string(move_count));
+            return scdd;
+        }
+
+
         // 单次游戏循环
         bool_current_game_session_t soloGameLoop(current_game_session_t cgs) {
+            using namespace Input;
+            using tup_idx = tuple_cgs_t_idx;
+
+            // 提取形参数据
+            const auto game_status = std::addressof(std::get<tup_idx::IDX_GAMESTATUS>(cgs));
+            const auto gb = std::addressof(std::get<tup_idx::IDX_GAMEBOARD>(cgs));
+
+            std::tie(*game_status, *gb) = processGameLogic(std::make_tuple(*game_status, *gb));
 
         }
 
@@ -44,16 +78,28 @@ namespace Game
             using namespace Graphics;
             using namespcace gameBoard::Graphics;
             using tup_idx = tuple_cgs_t_idx;
-            // 读取元组的内容
+            // 提取元组的内容
             const auto best_score = std::get<tup_idx::IDX_BESTSCORE>(final_game_status);
-
+            const auto end_game_status = std::get<tup_idx::IDX_GAMESTATUS>(final_game_status);
+            const auto gb = std::get<tup_idx::IDX_GAMEBOARD>(final_game_status);
+            
             std::ostringstream str_os;
 
             cleanScreen();
             // TODO:这里用定向输出符号应该也可以
             drawAlways(str_os, asciiArt2048);
 
-            drawAlways(str_os, );
+            // 绘制计分板,scdd是对计分板要显示的数据进行打包
+            const auto scdd = makeScoreboardDisplayData(best_score, gb);
+            drawAlways(str_os, dataSuppliment(scdd, gameScoreBoardOverlay));
+
+            // TODO:绘制快照在游戏结束
+            drawAlways(str_os, dataSuppliment(gb, gameBoardTextOutput));
+
+            // 在竞赛模式下面，当游戏结束的时候绘制 输\赢 提示
+            // TODO:竞赛模式暂时去掉
+
+            return str_os.str();
         }
 
         // 游戏主循环
@@ -63,6 +109,7 @@ namespace Game
             while(loop_again) {
                 std::tie(loop_again, current_game_status) = soloGameLoop(current_game_status);
             }
+            // 将游戏结束界面定向到标准输出设备
             drawAlways(std::cout, dataSuppliment(current_game_status, drawEndGameLoopGraphics));
             return gb;
         }
