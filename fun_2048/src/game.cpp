@@ -41,12 +41,15 @@ namespace Game
 
         // 游戏主逻辑
         game_status_board_t processGameLogic(game_status_board_t gsgb) {
-
+            game_status_board_t game_status;
+            gameBoard gb;
+            // 将形参数据拷贝到函数内再使用，而不是直接使用形参数据!
+            std::tie(game_status, gb) = gsgb;
 
         }
 
 
-        // 对最终游戏数据进行收集、整理、打包
+        // 对游戏结束时的 数据 进行收集、整理、打包
         Graphics::scoreboard_display_data_t 
         makeScoreboardDisplayData(ull best_score, gameBoard gb) {
             const auto game_board_score = gb.score;
@@ -64,7 +67,7 @@ namespace Game
             using namespace Input;
             using tup_idx = tuple_cgs_t_idx;
 
-            // 提取形参数据
+            // 提取形参的数据
             const auto game_status = std::addressof(std::get<tup_idx::IDX_GAMESTATUS>(cgs));
             const auto gb = std::addressof(std::get<tup_idx::IDX_GAMEBOARD>(cgs));
 
