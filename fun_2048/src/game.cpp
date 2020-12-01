@@ -41,11 +41,18 @@ namespace Game
 
         // 游戏主逻辑
         game_status_board_t processGameLogic(game_status_board_t gsgb) {
-            game_status_board_t game_status;
+            game_status_t game_status;
             gameBoard gb;
             // 将形参数据拷贝到函数内再使用，而不是直接使用形参数据!
             std::tie(game_status, gb) = gsgb;
 
+            if(gb.moved) {
+                
+            }
+            if(!canMoveOnGameBoard(gb)) {
+                game_status[FLAG_END_GAME] = true;
+            }
+            return std::make_tuple(game_status, gb);
         }
 
 

@@ -34,6 +34,10 @@ namespace Game
         explicit gameBoard(ull playsize);
         explicit gameBoard(ull playsize, tile_data_array_t prempt_board);
     };
+
+    long long moveCountOnGameBoard(gameBoard gb);
+    bool addTileOnGameBoard(gameBoard &gb);
+    bool canMoveOnGameBoard(gameBoard &gb);
     
 } // namespace Game
 
