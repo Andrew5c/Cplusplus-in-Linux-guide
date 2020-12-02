@@ -46,8 +46,10 @@ namespace Game
             // 将形参数据拷贝到函数内再使用，而不是直接使用形参数据!
             std::tie(game_status, gb) = gsgb;
 
+            unblockTilesOnGameBoard(gb);
+
             if(gb.moved) {
-                
+                addTileOnGameBoard(gb);
             }
             if(!canMoveOnGameBoard(gb)) {
                 game_status[FLAG_END_GAME] = true;
