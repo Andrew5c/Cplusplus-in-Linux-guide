@@ -25,12 +25,18 @@ namespace Game
 
         }
 
+        void registerMoveByOneOnGameBoard(gameBoard &gb) {
+            gb.moveCount++;
+            gb.moved = false;
+        }
+
         // 解锁游戏面板中的小方格
         gameboard_data_array_t 
         unblockTilesOnGameBoardDataArray(gameboard_data_array_t gbda) {
             using tile_data_array_t = gameBoard::tile_data_array_t;
-            // TODO：这句语法是什么？
+            
             // 初始化一个新的vector，空间是当前游戏面板中的所有小方格数量
+            // TODO：但是这句语法是什么？
             auto new_board_data_array = tile_data_array_t(std::get<IDX_BOARD>(gbda).size());
             // 对形参中的数据进行转换
             std::transform(std::begin(std::get<IDX_BOARD>(gbda)), 

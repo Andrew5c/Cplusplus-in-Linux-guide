@@ -3,6 +3,7 @@
 #include "global.hpp"
 #include "game-graphics.hpp"
 #include "game-pregamemenu.hpp"
+#include "game-input.hpp"
 
 #include <array>
 #include <chrono>
@@ -36,8 +37,24 @@ namespace Game
         
         // 游戏状态，游戏面板共同打包
         using game_status_board_t = std::tuple<game_status_t, gameBoard>;
-        
+        using intendedmove_gamestatus_t = 
+            std::tuple<Input::intended_move_t, game_status_t>;
         // -----------------------------------------------------
+
+        // 绘制游戏面板所需要的字符
+        std::string drawGraphics(current_game_session_t cgs) {
+
+        }
+
+        game_status_t updateOneShotDisplayFlags(game_status_t gamestatus) {
+
+        }
+
+        // 接收玩家的输入并处理当前游戏状态
+        intendedmove_gamestatus_t receiveAgentInput(Input::intended_move_t intendedmove, 
+                                                    game_status_t gamestatus) {
+
+        }
 
         // 游戏主逻辑
         game_status_board_t processGameLogic(game_status_board_t gsgb) {
@@ -48,9 +65,14 @@ namespace Game
 
             unblockTilesOnGameBoard(gb);
 
+            // 玩家进行了移动
             if(gb.moved) {
                 addTileOnGameBoard(gb);
+                registerMoveByOneOnGameBoard(gb);
             }
+            // TODO：在endless模式下，判断是否达到2048？
+
+            // 游戏面板已经无法进行移动 -> 游戏结束
             if(!canMoveOnGameBoard(gb)) {
                 game_status[FLAG_END_GAME] = true;
             }
@@ -58,7 +80,8 @@ namespace Game
         }
 
 
-        // 对游戏结束时的 数据 进行收集、整理、打包
+        // 对游戏结束时的 数据进行收集、整理、打包
+        // 并返回，等待输出
         Graphics::scoreboard_display_data_t 
         makeScoreboardDisplayData(ull best_score, gameBoard gb) {
             const auto game_board_score = gb.score;
@@ -76,11 +99,23 @@ namespace Game
             using namespace Input;
             using tup_idx = tuple_cgs_t_idx;
 
-            // 提取形参的数据
+            // 提取形参的数据的地址
             const auto game_status = std::addressof(std::get<tup_idx::IDX_GAMESTATUS>(cgs));
             const auto gb = std::addressof(std::get<tup_idx::IDX_GAMEBOARD>(cgs));
 
+            // 用户每移动一次，就处理一次游戏逻辑，并返回当前游戏状态
             std::tie(*game_status, *gb) = processGameLogic(std::make_tuple(*game_status, *gb));
+            
+            // 玩家每次移动后都需要重新更新游戏面板
+            drawAlways(std::cout, dataSuppliment(cgs, drawGraphics));
+            // 根据用户的输入，更新需要显示的标志位
+            *game_status = updateOneShotDisplayFlags(*game_status);
+
+            intended_move_t player_intended_move{};
+            // 接收玩家的输入
+            std::tie(player_intended_move, *game_status) = 
+                receiveAgentInput(player_intended_move, *game_status);
+
 
         }
 
@@ -133,6 +168,7 @@ namespace Game
 
         // 绘制游戏面板大小：4x4
         if(is_this_a_new_game) {
+            // 定义并初始化一个新的游戏面板
             gb = gameBoard(game_board_size);
             addTileOnGameBoard(gb);
         }

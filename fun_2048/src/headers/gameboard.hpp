@@ -39,6 +39,7 @@ namespace Game
 
     long long moveCountOnGameBoard(gameBoard gb);
     bool addTileOnGameBoard(gameBoard &gb);
+    void registerMoveByOneOnGameBoard(gameBoard &gb);
     bool canMoveOnGameBoard(gameBoard &gb);
     void unblockTilesOnGameBoard(gameBoard &gb);
 } // namespace Game
