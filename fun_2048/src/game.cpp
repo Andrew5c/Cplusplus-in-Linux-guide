@@ -19,8 +19,10 @@ namespace Game
         enum gameStatusFlag { FLAG_WIN,
                               FLAG_END_GAME,
                               FLAG_ONE_SHOT,
+                              FLAG_INPUT_ERROR,
                               MAX_NO_GAME_STATUS_FLAGS
         };
+        // 指示当前游戏状态
         using game_status_t = std::array<bool, MAX_NO_GAME_STATUS_FLAGS>;
 
         // TODO: 当前游戏会话的数据抽象
@@ -53,7 +55,17 @@ namespace Game
         // 接收玩家的输入并处理当前游戏状态
         intendedmove_gamestatus_t receiveAgentInput(Input::intended_move_t intendedmove, 
                                                     game_status_t gamestatus) {
-
+            using namespace Input;
+            const bool game_still_in_play = 
+                !gamestatus[FLAG_END_GAME] && !gamestatus[FLAG_WIN];
+            if(game_still_in_play) {
+                // 游戏仍在进行，接收玩家输入，开始下一次循环刷新
+                char c;
+                getKeypressDownInput(c);
+                // 检查输入是否合法
+                const auto is_invalid_keypress_code = checkInputANSI(c, intendedmove);
+                
+            }
         }
 
         // 游戏主逻辑
@@ -81,7 +93,6 @@ namespace Game
 
 
         // 对游戏结束时的 数据进行收集、整理、打包
-        // 并返回，等待输出
         Graphics::scoreboard_display_data_t 
         makeScoreboardDisplayData(ull best_score, gameBoard gb) {
             const auto game_board_score = gb.score;
@@ -115,8 +126,14 @@ namespace Game
             // 接收玩家的输入
             std::tie(player_intended_move, *game_status) = 
                 receiveAgentInput(player_intended_move, *game_status);
+            std::tie(std::ignore, *gb) = processAgentInput(player_intended_move, *gb);
 
-
+            // 处理游戏状态
+            bool loop_again;
+            std::tie(loop_again, *game_status) = 
+                processGameStatus(std::make_tuple(*game_status, *gb));
+            
+            return std::make_tuple(loop_again, cgs);
         }
 
         // 绘制游戏结束界面

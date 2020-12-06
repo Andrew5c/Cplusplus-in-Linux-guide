@@ -55,7 +55,7 @@ auto dataSuppliment(suppliment_t data, function_t f) {
     return lambda_f_to_return;
 }
 
-
+void getKeypressDownInput(char &c);
 void cleanScreen();
 
 #endif

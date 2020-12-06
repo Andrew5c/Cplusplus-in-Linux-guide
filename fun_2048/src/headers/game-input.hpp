@@ -7,6 +7,24 @@ namespace Game {
     namespace Input {
         namespace Keypress {
             namespace Code {
+                enum {
+                    CODE_ESC=27, 
+                    CODE_LSQUAREBRACKET = '[' 
+                };
+                
+                // TODO： 目前只保留对 箭头按键 的支持
+                // ANSI格式的 箭头按键
+                enum {
+                    CODE_ANSI_TRIGGER_1 = CODE_ESC,
+                    CODE_ANSI_TRIGGER_2 = CODE_LSQUAREBRACKET 
+                };
+                
+                enum {
+                    CODE_ANSI_UP = 'A',
+                    CODE_ANSI_DOWN = 'B',
+                    CODE_ANSI_LEFT = 'D',
+                    CODE_ANSI_RIGHT = 'C'
+                };
 
             } // namespace Code
         } // namespace Keypress
@@ -19,6 +37,9 @@ namespace Game {
         };
         using intended_move_t = std::array<bool, MAX_NO_INTENDED_MOVE_FLAGS>;
 
+        bool checkInputANSI(char c, intended_move_t &intendedmove);
+        // bool checkInputVIM(char c, intended_move_t &intendedmove);
+        // bool checkInputWASD(char c, intended_move_t &intendedmove);
         
     } // namespace Input
 } // namespace Game
