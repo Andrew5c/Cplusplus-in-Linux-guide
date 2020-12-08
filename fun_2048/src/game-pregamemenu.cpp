@@ -15,7 +15,7 @@ namespace Game
         namespace
         {
             // 暂时取消用户自定义游戏面板大小，固定为 4x4
-            // TODO : 后面可以将这个变量设置为全局宏定义
+            // TODO : 后面可以将这个变量设置为宏定义
             ull stored_game_size{4};
             /*
             enum preGameSetupStatusFlag {
