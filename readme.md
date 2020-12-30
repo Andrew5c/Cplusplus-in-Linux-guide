@@ -6,15 +6,13 @@
 *Luck is where opportunity meets preparation. ——Seneca* 
 
 
-
-
 ### Environment setup & Books
 
 #### Environment :computer:
 - Ubuntu 16.04 + Visual Studio Code （使用vs code仅仅编写代码，编译还是在终端下面使用makefile）
     - [vs code 下载到本地](https://code.visualstudio.com/Download)
     - 解压： `sudo dpkg -i your-.deb-file-name`
-    - 然后就可以直接在Ubuntu中搜索到VS code
+    - 然后可以直接在软件中心中搜索到VS code
 
 - [一个很好用的vim插件](https://github.com/luckxiang/vim) （熟悉基本的vim操作）
 
@@ -157,10 +155,10 @@
 
 > 笔者比较喜欢玩2048这个小游戏，因此想要模仿下面两个很好的开源项目，实现一遍终端版的2048。然后计划使用第二个开源项目中提到的蒙特卡洛法，在终端版2048的基础上实现 AI 版的2048。
 
-> 也非常欢迎感兴趣的小伙伴一起加入开发（可以通过主页邮箱联系我）！
+> 也非常欢迎感兴趣的小伙伴一起加入开发（可以通过主页邮箱联系或者项目issue）！
 
 - [2048 step by step](./fun_2048/) :snail: :sweat_drops:
-- [问题记录](./fun_2048/2048_note.md) :book:
+- [开发笔记](./fun_2048/2048_note.md) :book:
 
 
 - 参考开源项目
