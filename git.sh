@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "delete object files..."
-echo "----------------------"
 # make clean for useless files
+ 
+echo "------make clean-------"
 cd code/operatorOverload/ 
 make clean
 
@@ -12,8 +12,7 @@ make clean
 cd ../binaryTreeClass/
 make clean
 
-echo "-------------------"
-echo "add files..."
+echo "------add files-------"
 # back to main pwd
 cd ../..
 git add git.sh
@@ -36,6 +35,7 @@ git add code/DSAA/
 git add fun_2048/src/
 git add fun_2048/2048_note.md 
 git add fun_2048/CMakeLists.txt 
+echo "------add finished-------"
 
 
 if (($# == 0))
@@ -45,7 +45,8 @@ else
  git commit -m "$1"
 fi
 
+echo "-------start push-------"
 git push origin master
 
-echo "----------------------"
-echo "push finished!"
+echo "------ push finished-------"
+
