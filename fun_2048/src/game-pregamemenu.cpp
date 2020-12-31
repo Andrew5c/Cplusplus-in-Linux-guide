@@ -38,7 +38,8 @@ namespace Game
             }
 
             void oneLoop() {
-                //bool invalidInput = flagInputErrorChoice;
+                // 这个函数对原始代码做了较大改动,主要原因是删除自定义面板大小的功能
+                // 整个屏幕的刷新是通过不断的清屏/打印实现的
                 cleanScreen();
                 // 绘制游戏启动标题
                 drawAlways(std::cout, Graphics::asciiArt2048);
@@ -50,6 +51,8 @@ namespace Game
 
             void endlessLoop() {
                 // TODO:添加游戏中途退出按钮
+                // 原始的游戏风格是无限模式,只有用户达到2048,才会出现退出选项
+                // 中途想要退出只能强行中断程序
                 while(1) {
                     oneLoop();
                 }
@@ -72,6 +75,7 @@ namespace Game
             // 首次游戏时，初始化为：无存档
             setupNewGame(newGameFlag::newGameFlagNull);
         }
+
         void continueOldGame() {
 
         }

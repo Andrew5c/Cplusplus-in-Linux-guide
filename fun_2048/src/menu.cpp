@@ -36,7 +36,7 @@ namespace {
     bool flagInputError{};
 
     void receiveInputFlags(std::istream &in_os) {
-        // 重置错误选择标志 -> 0
+        // 新的c++语法:重置错误选择标志 -> 0
         flagInputError = bool{};
         char c;
         in_os >> c;
@@ -112,7 +112,6 @@ namespace {
 
 
 // 游戏启动函数
-// 启动游戏选择按钮
 namespace Menu{
     void startMenu() {
         endlessLoop();

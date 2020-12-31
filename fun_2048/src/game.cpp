@@ -2,6 +2,7 @@
 #include "gameboard.hpp"
 #include "global.hpp"
 #include "game-graphics.hpp"
+#include "gameboard-graphics.hpp"
 #include "game-pregamemenu.hpp"
 #include "game-input.hpp"
 
@@ -140,7 +141,7 @@ namespace Game
         std::string drawEndGameLoopGraphics(current_game_session_t final_game_status) {
             // 按照特定顺序输出界面信息
             using namespace Graphics;
-            using namespcace gameBoard::Graphics;
+            using namespace GameBoard::Graphics;
             using tup_idx = tuple_cgs_t_idx;
             // 提取元组的内容
             const auto best_score = std::get<tup_idx::IDX_BESTSCORE>(final_game_status);
@@ -173,7 +174,7 @@ namespace Game
             while(loop_again) {
                 std::tie(loop_again, current_game_status) = soloGameLoop(current_game_status);
             }
-            // 将游戏结束界面定向到标准输出设备
+            // 将游戏结束界面(包含最终游戏状态)定向到标准输出设备
             drawAlways(std::cout, dataSuppliment(current_game_status, drawEndGameLoopGraphics));
             return gb;
         }
@@ -196,13 +197,13 @@ namespace Game
         const std::chrono::duration<double> elapsed = finishTime - startTime;
         const auto duration = elapsed.count();
 
-        // TODO:记录本次游戏最终分数并保存
+        // TODO:记录本次游戏最终分数gb,并保存
     }
 
 
     void startGame() {
-        // TODO:为了保证能够继续之前的游戏
-        // 会根据有无存档标志来判断是否继续之前的游戏
+        // TODO:为了保证能够继续之前的游戏,会根据有无存档标志来判断是否继续之前的游戏
+        // TODO:一旦选择无存档游戏,程序会进入一个死循环,这里有待改进
         PreGameSetup::setupNewGame();
     }
 

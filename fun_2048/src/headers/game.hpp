@@ -5,9 +5,9 @@ namespace Game {
     // 这个结构体被定义在 gameboard.cpp
     // TODO:这里算是对变量的外部声明吗？
     struct gameBoard;
-    
     enum class playGameFlag {brandNewGame, continuePreGame};
     
+    // 游戏默认网格4x4
     void playGame(playGameFlag cont, gameBoard gb, 
                   unsigned long long game_board_size = 4);
     
