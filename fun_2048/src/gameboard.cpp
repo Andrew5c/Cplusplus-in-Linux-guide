@@ -56,9 +56,13 @@ namespace Game
         
     }
     
-
-    // --------------------------------------------
     // TODO:对上述函数进行重新封装，目的？
+    // --------------------------------------------
+    
+    tile_t getTileOnGameboardDataArray(gameboard_data_array_t gbda, point2D_t pt) {
+
+    }
+
     bool addTileOnGameBoard(gameBoard &gb) {
         return addTileOneGameBoardDataArray(gb.gbda);
     }
