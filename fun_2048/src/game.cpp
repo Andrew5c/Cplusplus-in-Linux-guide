@@ -182,8 +182,10 @@ namespace Game
 
     void playGame(playGameFlag cont, gameBoard gb, ull game_board_size) {
         const auto is_this_a_new_game = (cont == playGameFlag::brandNewGame);
-        const auto bestScore = statistics::loadGameBestScore();
-
+        // TODO:添加每次游戏的统计功能,记录最高分
+        // const auto bestScore = statistics::loadGameBestScore();
+        const auto bestScore = 100;
+        
         // 绘制游戏面板大小：4x4
         if(is_this_a_new_game) {
             // 定义并初始化一个新的游戏面板

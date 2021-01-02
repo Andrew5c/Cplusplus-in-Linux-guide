@@ -1,13 +1,13 @@
 #include "gameboard-graphics.hpp"
 #include "gameboard.hpp"
-
+#include "point2d.hpp"
+#include "tile-graphics.hpp"
 
 #include <array>
 #include <sstream>
 #include <algorithm>
 
 namespace Game {
-    
     namespace GameBoard {
         namespace Graphics {
             namespace {
@@ -63,8 +63,9 @@ namespace Game {
                             // 对于每一行,在上下水平线之间绘制分隔线,注意开头的分隔线和中间分隔线的区别
                             bool is_first_col = (x == 0);
                             const auto sp = (is_first_row ? "  " : " ");
-                            // TODO:计算每个方格中的数据,进行显示
-                            const auto tile = getTileOnGameboardDataArray(gbda, point2D_t);
+                            // 获取坐标所指示的方格中数据
+                            // TODO:这里使用point2D_t类的默认构造函数,为什么用{},而不是()?
+                            const auto tile = getTileOnGameboardDataArray(gbda, point2D_t{x, y});
                             str_os << sp << "| " << drawTileString(tile);
                         }
                         // 绘制每一行的结束

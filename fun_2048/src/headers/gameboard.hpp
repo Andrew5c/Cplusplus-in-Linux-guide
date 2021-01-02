@@ -5,6 +5,8 @@
 #include <tuple>
 #include <vector>
 
+struct point2D_t;
+
 namespace Game
 {
     // 对游戏面板中的每一个小方格的数据抽象
@@ -42,6 +44,9 @@ namespace Game
     void registerMoveByOneOnGameBoard(gameBoard &gb);
     bool canMoveOnGameBoard(gameBoard &gb);
     void unblockTilesOnGameBoard(gameBoard &gb);
+    
+    tile_t getTileOnGameboardDataArray(gameBoard::gameboard_data_tuple_t gbda, point2D_t pt);
+    size_t getPlaysizeOfGameboardDataArray(gameBoard::gameboard_data_tuple_t gbda);
 } // namespace Game
 
 
