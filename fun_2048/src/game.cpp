@@ -16,7 +16,7 @@ namespace Game
     namespace
     {
         // 全局变量定义
-        enum direstion {UP, DOWN, RIGHT, LEFT};
+        enum directions {UP, DOWN, RIGHT, LEFT};
         enum gameStatusFlag { FLAG_WIN,
                               FLAG_END_GAME,
                               FLAG_ONE_SHOT,
@@ -37,11 +37,11 @@ namespace Game
         
         // 当前游戏会话的进一步数据抽象
         using bool_current_game_session_t = std::tuple<bool, current_game_session_t >;
-        
+        using bool_gameboard_t = std::tuple<bool, gameBoard>;
+
         // 游戏状态，游戏面板共同打包
         using game_status_board_t = std::tuple<game_status_t, gameBoard>;
-        using intendedmove_gamestatus_t = 
-            std::tuple<Input::intended_move_t, game_status_t>;
+        using intendedmove_gamestatus_t = std::tuple<Input::intended_move_t, game_status_t>;
         // -----------------------------------------------------
 
         // 绘制游戏面板所需要的字符
@@ -50,22 +50,64 @@ namespace Game
         }
 
         game_status_t updateOneShotDisplayFlags(game_status_t gamestatus) {
+            const auto disable_one_shot_flag = [](bool &trigger) {trigger = !trigger;};
+            if(gamestatus[FLAG_ONE_SHOT]) {
+                disable_one_shot_flag(gamestatus[FLAG_ONE_SHOT]);
 
+                if(gamestatus[FLAG_INPUT_ERROR]) {
+                    disable_one_shot_flag(gamestatus[FLAG_INPUT_ERROR]);
+                }
+            }
+            return gamestatus;
         }
 
         // 接收玩家的输入并处理当前游戏状态
         intendedmove_gamestatus_t receiveAgentInput(Input::intended_move_t intendedmove, 
                                                     game_status_t gamestatus) {
             using namespace Input;
-            const bool game_still_in_play = 
-                !gamestatus[FLAG_END_GAME] && !gamestatus[FLAG_WIN];
+            const bool game_still_in_play = !gamestatus[FLAG_END_GAME] && !gamestatus[FLAG_WIN];
             if(game_still_in_play) {
                 // 游戏仍在进行，接收玩家输入，开始下一次循环刷新
                 char c;
                 getKeypressDownInput(c);
-                // 检查输入是否合法
+                // 检查输入是否合法,只有输入为四个箭头中的其中一个,才合法
                 const auto is_invalid_keypress_code = checkInputANSI(c, intendedmove);
-                
+                // TODO:检测其他按键的信号,并做相应处理
+                // ...
+
+                if(is_invalid_keypress_code) {
+                    gamestatus[FLAG_INPUT_ERROR] = true;
+                }
+            }
+            return std::make_tuple(intendedmove, gamestatus);
+        }
+
+        // 根据用户的方向键,计算游戏面板数据
+        gameBoard decideMove(directions d, gameBoard gb) {
+            switch (d) {
+            case UP:
+                tumbleTilesUpOnGameboard(gb);
+                break;
+
+            case DOWN:
+                tumbleTilesDownOnGameboard(gb);
+                break;
+
+            case LEFT:
+                tumbleTilesLeftOnGameboard(gb);
+                break;
+
+            case RIGHT:
+                tumbleTilesRightOnGameboard(gb);
+                break;
+            }
+            return gb;
+        }
+
+        bool_gameboard_t processAgentInput(Input::intended_move_t intendedmove, gameBoard gb) {
+            using namespace Input;
+            if(intendedmove[FLAG_MOVE_LEFT]) {
+                gb = 
             }
         }
 

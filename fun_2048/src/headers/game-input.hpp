@@ -8,12 +8,13 @@ namespace Game {
         namespace Keypress {
             namespace Code {
                 enum {
-                    CODE_ESC=27, 
+                    // TODO:这两个枚举的作用是什么?
+                    CODE_ESC = 27, 
                     CODE_LSQUAREBRACKET = '[' 
                 };
                 
                 // TODO： 目前只保留对 箭头按键 的支持
-                // ANSI格式的 箭头按键
+                // ANSI格式的 箭头按键为什么是这样的?
                 enum {
                     CODE_ANSI_TRIGGER_1 = CODE_ESC,
                     CODE_ANSI_TRIGGER_2 = CODE_LSQUAREBRACKET 

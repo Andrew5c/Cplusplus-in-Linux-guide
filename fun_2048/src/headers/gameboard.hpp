@@ -45,6 +45,11 @@ namespace Game
     bool canMoveOnGameBoard(gameBoard &gb);
     void unblockTilesOnGameBoard(gameBoard &gb);
     
+    void tumbleTilesUpOnGameboard(gameBoard &gb);
+    void tumbleTilesDownOnGameboard(gameBoard &gb);
+    void tumbleTilesLeftOnGameboard(gameBoard &gb);
+    void tumbleTilesRightOnGameboard(gameBoard &gb);
+
     tile_t getTileOnGameboardDataArray(gameBoard::gameboard_data_tuple_t gbda, point2D_t pt);
     size_t getPlaysizeOfGameboardDataArray(gameBoard::gameboard_data_tuple_t gbda);
 } // namespace Game
