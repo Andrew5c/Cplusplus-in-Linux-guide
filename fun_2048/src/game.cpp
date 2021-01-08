@@ -107,8 +107,18 @@ namespace Game
         bool_gameboard_t processAgentInput(Input::intended_move_t intendedmove, gameBoard gb) {
             using namespace Input;
             if(intendedmove[FLAG_MOVE_LEFT]) {
-                gb = 
+                gb = decideMove(LEFT, gb);
             }
+            if(intendedmove[FLAG_MOVE_RIGHT]) {
+                gb = decideMove(RIGHT, gb);
+            }
+            if(intendedmove[FLAG_MOVE_UP]) {
+                gb = decideMove(UP, gb);
+            }
+            if(intendedmove[FLAG_MOVE_DOWN]) {
+                gb = decideMove(DOWN, gb);
+            }
+            return std::make_tuple(true, gb);
         }
 
         // 游戏主逻辑
@@ -147,7 +157,11 @@ namespace Game
             return scdd;
         }
 
+        bool_gameboard_t processGameStatus(game_status_board_t gsgb) {
 
+        }
+
+        
         // 单次游戏循环
         bool_current_game_session_t soloGameLoop(current_game_session_t cgs) {
             using namespace Input;

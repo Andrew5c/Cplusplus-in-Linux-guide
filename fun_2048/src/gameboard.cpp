@@ -249,12 +249,23 @@ namespace Game
             // 这里暂且不加,仅仅实现常规模式
         }
 
+        // TODO:这个函数的作用?
         bool checkRecursiveOffsetInGameBounds(delta_t dt_point, int playsize) {
             int x, y, x2, y2;
             std::tie(x, y) = dt_point.first.get();
-            std::tie(x, y) = dt_point.second.get();
+            std::tie(x2, y2) = dt_point.second.get();
 
             const auto positive_direction = (y2 + x2 == 1);
+            const auto negative_direction = (y2 + x2 == -1);
+            const auto is_positive_y_direction_flagged = (y2 == 1);
+            const auto is_negative_y_direction_flagged = (y2 == -1);
+
+            const auto is_inside_outer_bounds = 
+                (positive_direction && (is_positive_y_direction_flagged ? y : x) < playsize-2);
+            const auto is_inside_inner_bounds = 
+                (negative_direction && (is_negative_y_direction_flagged ? y : x) > 1);
+
+            return (is_inside_inner_bounds || is_inside_outer_bounds);
         }
 
 
@@ -276,8 +287,9 @@ namespace Game
                     shiftTilesOnGameboardDataArray(gb.gbda, dt_point);
                 }
             }
-            if () {
-
+            if (checkRecursiveOffsetInGameBounds(dt_point, getPlaysizeOfGameboardDataArray(gb.gbda))) {
+                // 递归调用
+                moveOnGameboard(gb, std::make_pair(dt_point.first + dt_point.second, dt_point.second));
             }
         }
 
@@ -340,6 +352,15 @@ namespace Game
         
     } // namespace
     
+    // 定义hpp文件中的两个构造函数
+    gameBoard::gameBoard(ull playsize) : 
+        gameBoard{playsize, tile_data_array_t(playsize * playsize)} {}
+
+    gameBoard::gameBoard(ull playsize, tile_data_array_t prempt_board) : 
+        gbda{playsize, prempt_board} {}
+
+
+
     size_t getPlaysizeOfGameboardDataArray(gameboard_data_array_t gbda) {
         return std::get<IDX_PLAYSIZE>(gbda);
     }
@@ -360,6 +381,11 @@ namespace Game
 
     bool canMoveOnGameBoard(gameBoard &gb) {
         return canMoveOnGameBoardDataArray(gb.gbda);
+    }
+
+    void registerMoveByOneOnGameboard(gameBoard &gb) {
+        gb.moveCount++;
+        gb.moved = true;
     }
 
     void unblockTilesOnGameBoard(gameBoard &gb) {
