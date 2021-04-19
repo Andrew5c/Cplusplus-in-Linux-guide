@@ -4,12 +4,14 @@
 
 - win下本地新建仓库：
 	- git initgit 
-	- add somefilesgit commit -m "comments"
+	- add somefiles
+	- git commit -m "comments"
 	- git remote add origin YOUR_RES_ADDREgit push -u origin master （以后的push操作不需要加 -u）
   
 - Linux下面clone这个仓库，修改之后再提交
 	- git clone HTTPS_ADDRESS
-	- git add somefilesgit commit -m "comments"
+	- git add somefiles
+	- git commit -m "comments"
 	- git config --global user.email "YOUR-EMAIL"
 	- git config --global user.name "YOUR-NAME"
 	- 因为第一次使用这个Linux系统推送文件到远程仓库，因此需要上面两个命令配置我的信息。
