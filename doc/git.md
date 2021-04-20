@@ -6,7 +6,8 @@
 	- git initgit 
 	- add somefiles
 	- git commit -m "comments"
-	- git remote add origin YOUR_RES_ADDREgit push -u origin master （以后的push操作不需要加 -u）
+	- git remote add origin YOUR_RES_ADDRE
+	- git push -u origin master （以后的push操作不需要加 -u）
   
 - Linux下面clone这个仓库，修改之后再提交
 	- git clone HTTPS_ADDRESS
@@ -62,6 +63,15 @@ git push...
 		- `--soft`：不删除工作空间改动代码，撤销commit，不撤销git add
 		- `HEAD^^^`：后面的heat符号个数可以使用`HEAD～n`替代，表示回退到上n个版本
 	- 注意这个时候**本地的版本已经落后远程仓库的版本**了，直接进行push操作的话，是无法成功的。因为我主要想回退到上一个版本，因此需要强制远程仓库与本地版本保持一致，push的时候需要加上`-f`参数，也就是`git push -f origin master`
+
+
+- 使用电脑A新建了本地仓库并且同步到了github上,那么如何同时又想在电脑B上拉取下来,在电脑B上进行修改,并推送到同样的这个github仓库上?
+	- 在电脑B上首先需要将该仓库克隆下来: git clone HTTPS_ADDRESS
+	- 然后在电脑B上生成SSH密钥: ssh-keygen -t rsa -C "youremail@example.com"
+	- `~/.ssh/`目录下可以看到id_rsa和id_rsa.pub，其中id_rsa.pub是公钥
+	- 并将该秘钥设置到自己的github账户上(通过操作自己的github网页)
+	- 然后删除远程链接: git remote rm origin
+	- 最后添加新的SSH链接: git remote add origin git@github.com:your_username/your_repository_name.git
 
 - **tag**
 用在给仓库历史中的某一个提交打上标签，以示重要。一般人们使用这个功能来标记发布节点（v1.0, v2.0）等。
