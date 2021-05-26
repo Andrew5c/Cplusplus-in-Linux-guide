@@ -21,6 +21,7 @@ git add doc/*.md
 git add doc/fig/*
 git add code/LC/*.cpp *.h
 git add code/essential/*.cpp *.h
+git add code/essential/chapter2/*
 
 # project files in each chapter of essential
 git add code/operatorOverload/

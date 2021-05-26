@@ -3,17 +3,21 @@
 * All rights reserved.
 * Author : Andrew Q.
 * Date : 2020-09-12-11.19.19
-* Description : ÒÔ²»Í¬µÄ·½Ê½ÊµÏÖ£¬ÔÚÒ»¸övector»òÕßarrayÖĞ²éÕÒÄ³¸öÖµ
+* Description : ï¿½Ô²ï¿½Í¬ï¿½Ä·ï¿½Ê½Êµï¿½Ö£ï¿½ï¿½ï¿½Ò»ï¿½ï¿½vectorï¿½ï¿½ï¿½ï¿½arrayï¿½Ğ²ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Öµ
 */
 #include<iostream>
 #include<vector>
 #include<list>
 #include<iterator>
+#include<algorithm>
+#include<functional>
+
+
 using namespace std;
 
-// Ê×ÏÈÊÇ»ù±¾µÄÊµÏÖ·½Ê½
-// ÒÔº¯ÊıÄ£°å·Ö±ğÊµÏÖ¶ÔvectorºÍarrayµÄ²éÕÒ
-// ÕâÑùµÄÊµÏÖ£¬Ã¿¸öº¯ÊıÖ»ÄÜÕë¶Ôvector»òÕßarray
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ï¿½Ê½
+// ï¿½Ôºï¿½ï¿½ï¿½Ä£ï¿½ï¿½Ö±ï¿½Êµï¿½Ö¶ï¿½vectorï¿½ï¿½arrayï¿½Ä²ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö£ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½vectorï¿½ï¿½ï¿½ï¿½array
 template <typename T>
 const T* myFind(const vector<T> &vec, int len, const T &num)
 {
@@ -25,7 +29,7 @@ const T* myFind(const vector<T> &vec, int len, const T &num)
     }
     return 0;
 }
-// ÒÔÖØÔØµÄ·½Ê½¶¨ÒåarrayµÄ²éÕÒº¯Êı
+// ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄ·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½arrayï¿½Ä²ï¿½ï¿½Òºï¿½ï¿½ï¿½
 template <typename T>
 const T* myFind(const T arr[], int len, const T &num)
 {
@@ -38,8 +42,8 @@ const T* myFind(const T arr[], int len, const T &num)
     return 0;
 }
 
-// ÏÂÃæÔÚ¶ÔµÚÒ»¸ö²ÎÊı½øĞĞ³éÏó
-// ÓÃÖ¸ÕëÈ¡³öÈİÆ÷µÄÔªËØ£¬ÔÚ½øĞĞ²Ù×÷
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶Ôµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ³ï¿½ï¿½ï¿½
+// ï¿½ï¿½Ö¸ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½Ú½ï¿½ï¿½Ğ²ï¿½ï¿½ï¿½
 template <typename T>
 const T* myFindGeneric(const T* start, const T* over, const T &num)
 {
@@ -51,7 +55,7 @@ const T* myFindGeneric(const T* start, const T* over, const T &num)
     }
     return 0;
 }
-// ÒòÎªvector¿ÉÄÜÊÇ¿ÕµÄ£¬ËùÒÔvectorÒ»°ãÅäºÏÏÂÃæÕâ¸öº¯ÊıÒ»ÆğÊ¹ÓÃ
+// ï¿½ï¿½Îªvectorï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ÕµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½vectorÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¹ï¿½ï¿½
 template <typename T>
 inline const T* myBegin(const vector<T> &vec)
 {
@@ -63,8 +67,8 @@ inline const T* myEnd(const vector<T> &vec)
     return vec.empty() ? 0 : &vec[vec.size()];
 }
 
-// Ê¹ÓÃ·ºĞÍÖ¸ÕëÔÙ´ÎÊµÏÖfindº¯Êı
-// ÊµÏÖ¶ÔÈİÆ÷ºÍÊı¾İÀàĞÍµÄ¸´ÓÃ
+// Ê¹ï¿½Ã·ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ù´ï¿½Êµï¿½ï¿½findï¿½ï¿½ï¿½ï¿½
+// Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ¸ï¿½ï¿½ï¿½
 template <typename iteratorType, typename elemType>
 iteratorType findIterator(iteratorType first, iteratorType last, elemType &num)
 {
@@ -73,6 +77,43 @@ iteratorType findIterator(iteratorType first, iteratorType last, elemType &num)
             return first;
     }
     return last;
+}
+
+template <typename elemType>
+void dispaly(const vector<elemType> &vec, ostream &os) {
+    // æ³¨æ„ä¸‹é¢éœ€è¦æ·»åŠ typenameå…³é”®å­—,ä¹¦ä¸­æ²¡æœ‰æ·»åŠ 
+    typename vector<elemType>::const_iterator iter_begin = vec.begin();
+    typename vector<elemType>::const_iterator iter_end = vec.end();
+
+    for(; iter_begin != iter_end; iter_begin++)
+        os << *iter_begin << ' ';
+    os << endl;
+}
+
+/*
+- åˆ©ç”¨æ³›å‹ç®—æ³•å®ç° ç»Ÿè®¡ä¸€ä¸ªå®¹å™¨ä¸­æŸä¸ªå…ƒç´ å‡ºç°çš„ä¸ªæ•°
+*/
+int countOccurs(const vector<int> &vec, int num) {
+    typename vector<int>::const_iterator iter = vec.begin();
+    int num_count = 0;
+
+    while((iter = find(iter, vec.end(), num)) != vec.end()) {
+        num_count++;
+        iter++; // ä»å½“å‰æ‰¾åˆ°çš„ä½ç½®çš„ä¸‹ä¸€ä¸ªå…ƒç´ å¼€å§‹ æ–°ä¸€è½®çš„æŸ¥æ‰¾
+    }
+    return num_count;
+}
+
+/*
+- å‡½æ•°å¯¹è±¡çš„ä½¿ç”¨
+*/
+vector<int> callFunctional(void) {
+    vector<int> vec_a(3, 1);
+    vector<int> vec_b(3, 2);
+    vector<int> vec_sum(3);
+
+    transform(vec_a.begin(), vec_a.end(), vec_b.begin(), vec_sum.begin(), plus<int>());
+    return vec_sum;
 }
 
 
@@ -84,12 +125,12 @@ int main(){
 
     const int *ptr1 = myFind(myArr, sizeof(myArr)/sizeof(myArr[0]), searchVal);
     cout << *ptr1 << endl;
-    // Ê¹ÓÃÖØÔØº¯Êı½øĞĞ²éÕÒ
+    // Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ²ï¿½ï¿½ï¿½
     const int *ptr2 = myFind(myVec, myVec.size(), searchVal);
     cout << *ptr2 << endl;
 
     // ---------------------------------------------
-    // ²âÊÔ·ºĞÍº¯Êı
+    // ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Íºï¿½ï¿½ï¿½
     const int *ptr3 = myFindGeneric(myBegin(myVec), myEnd(myVec), searchVal);
     cout << *ptr3 << endl;
 
@@ -97,7 +138,7 @@ int main(){
     cout << *ptr4 << endl;
 
     // ---------------------------------------------
-    // ²âÊÔiterator¶¨ÒåµÄ·ºĞÍº¯Êı
+    // ï¿½ï¿½ï¿½ï¿½iteratorï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½Íºï¿½ï¿½ï¿½
     vector<int>::iterator ans;
     ans = findIterator(myVec.begin(), myVec.end(), searchVal);
     cout << "use the iterator fun to find vector : " << *ans << endl;
@@ -106,6 +147,15 @@ int main(){
     list<int>::iterator ans2;
     ans2 = findIterator(myLs.begin(), myLs.end(), searchVal);
     cout << "use the iterator fun to find list : " << *ans2 << endl;
+
+    // ----------
+    dispaly(myVec, cout);
+
+    // ----------
+    vector<int> vec_sum = callFunctional();
+    dispaly(vec_sum, cout);
+
+    cout << countOccurs(vec_sum, 3) << endl;
 
     return 0;
 }
