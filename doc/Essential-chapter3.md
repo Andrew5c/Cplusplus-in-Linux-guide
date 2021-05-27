@@ -92,6 +92,8 @@ int countOccurs(const vector<int> &vec, int num) {
     return num_count;
 }
 ```
+
+
 #### 函数对象(function object)
 - 是某种class的实例对象,这类class对函数调用运算符进行了重载,这样,就可以将这个函数对象当成一般函数来使用.
 - 目的: 将某一种**行为**传递给函数,而不是传统的参数.
@@ -109,8 +111,12 @@ void callFunctional(vector<int> &vec_sum) {
 }
 ```
 
+#### 函数对象适配器(function object adapter)
+- 该适配器会对函数对象进行特定的修改操作,使其满足一定的要求.
+- 绑定适配器(binder adapter)会将函数对象的参数绑定至特定值,使二元参数转化为一元参数.
 
-### 使用map
+
+### 使用map([代码展示](../code/essential/map_and_set.cpp))
 - map被定义为一对数值对，一个key对应一个value；
 - 定义方式： 
 ```c++

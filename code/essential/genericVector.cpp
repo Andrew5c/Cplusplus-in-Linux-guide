@@ -79,9 +79,14 @@ iteratorType findIterator(iteratorType first, iteratorType last, elemType &num)
     return last;
 }
 
+/*
+- elemType 叫做 模板参数
+- elemType t, 这里定义的 t 叫做 从属名称
+- vector<elemType>::iterator t, 这里定义的 t 叫做 嵌套从属名称
+*/
 template <typename elemType>
 void dispaly(const vector<elemType> &vec, ostream &os) {
-    // 注意下面需要添加typename关键字,书中没有添加
+    // 注意下面需要添加typename关键字,标识嵌套从属名称, 但是书中没有添加
     typename vector<elemType>::const_iterator iter_begin = vec.begin();
     typename vector<elemType>::const_iterator iter_end = vec.end();
 
@@ -111,11 +116,25 @@ vector<int> callFunctional(void) {
     vector<int> vec_a(3, 1);
     vector<int> vec_b(3, 2);
     vector<int> vec_sum(3);
-
+    // 此处, plus<int>() 即为STL中提供的函数对象
     transform(vec_a.begin(), vec_a.end(), vec_b.begin(), vec_sum.begin(), plus<int>());
     return vec_sum;
 }
 
+/*
+- 使用函数对象适配器,对函数对象进行修改
+- 使用 bind2nd 将一个特定的值绑定到 less<int> 函数对象的第二操作数上,将其变为一元函数
+*/
+vector<int> filter(const vector<int> &vec, int val, less<int> &lt) {
+    vector<int> result;
+    vector<int>::const_iterator  iter = vec.begin();
+
+    while((iter = find_if(iter, vec.end(), bind2nd(lt, val))) != vec.end() ) {
+        result.push_back(*iter);
+        iter++;
+    }
+    return result;
+}
 
 int main(){
     int myArr[] = {1, 2, 3, 4};
