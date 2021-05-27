@@ -1,16 +1,19 @@
 # 《Essential c++》——第四章
 
-基于对象的编程风格
+## 基于对象的编程风格
 
 ### 如何实现一个class？
-- **理解**：class名称被视为一个类型（type）名称，就像内置的int、double一样。是一种自定义的、扩充的数据类型；
+- **理解**：class名称被视为一个类型（type）名称，就像内置的int、double一样。是一种自定义的、扩充的数据类型；要注意好好理解这句话.
+- class都会提供一组操作函数,让我们作用于其object之上;
 - class组成的两部分：一组公开的（public）操作函数和运算符（成员函数member function）； 一组私有的（private）实现细节；
-- 构造函数：名称与class相同，不指定返回值，可以被重载；
+- 构造函数：名称与class相同，不指定返回值，可以有参数,可以被重载；
 	- 当class object被定义的时候，编译器自动调用构造函数对该object进行初始化；
 - 析构函数：名称与class相同，前面加上`~`符号，不指定返回值，没有参数，不能重载；
 	- 当object结束声明时，编译器自动调用析构函数来释放在构造函数中（或者对象声明周期中）分配的资源。
 
 #### 成员初始化列表
+- **主要用在需要将参数传递给member class object的构造函数中.**
+比如: 下面这个类 可用可不用 成员初始化列表.
 
 ```c++
 class Triangular{
@@ -25,6 +28,19 @@ private:
 Triangular::Triangular(const Triangular &rhs)
   :_length(rhs._length), _beg(rhs._beg), _next(rhs._next){}
 ```
+如果类中含有**string的对象**, 那么就必须使用:
+```c++
+class Triangular{
+public:
+	Triangular(const Triangular &rhs);
+private:
+	string _name
+}
+// 采用成员初始化列表对成员变量进行初始化
+Triangular::Triangular(const Triangular &rhs)
+  :_name("andrew"){}
+```
+
 
 #### 成员逐一初始化（拷贝构造函数）
 - 当我们以一个对象的初值作为另一个对象的初始的时候，类数据成员会被依次复制。比如：
@@ -77,7 +93,6 @@ Matrix::Matrix(const Matrix &rhs)
 class a{
     public:
     // 类内声明const
-    A
     int length const {return length};
 }
 ```
@@ -86,10 +101,12 @@ class a{
 - 如果一个类的某个私有成员变量不属于**抽象概念一环**，也就是它的改变其实不会改变不会改变这个类的状态，那么，可以用``mutable``关键字来修饰。
 - 此时，可以在const成员函数中，对这种变量做出修改。
 
-### this指针（[本节代码展示](../code/essential/this.cpp)）
-- this指针是在成员函数内部用来指向其调用者（一个对象）的一个指针。
-- this指针可以让我们访问调用者的一切；
-- 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。然后在调用时，this指针被传入该对象的一个引用。比如：
+
+### `this`指针（[本节代码展示](../code/essential/this.cpp)）
+- `this`指针是在成员函数内部用来指向其调用者（一个对象）的一个指针;
+- `this`指针可以让我们访问调用者的一切；
+- 内部工作过程：这种机制的实现是因为编译器内部会自动的在每个成员函数的参数列表中加入一个名为**this**的指针。然后在调用时，this指针被传入该对象的一个引用。
+比如：
 ```c++
 Triangular& Triangular::copy(const Triangular &rhs){
     // 函数实现
@@ -108,7 +125,6 @@ copy(&tr1, tr2);
 ```
 
 - `return \*this` 返回指针所指的对象；
-
 - 这会在我们要复制一个对象给另一个对象的时候用到。
 
 
@@ -120,15 +136,23 @@ class Triangular{
     private:
     static vector<int> _elems;
 }
-// 类外进行定义
+// 类外进行定义,此时不需要声明static
+// 也可以直接在这里指定初值
 vector<int> Triangular::_elems;
 ```
 - 它的访问方式和一般非静态数据成员的访问方式一样。
 
-#### 静态成员函数
-- 不访问任何非静态数据成员的成员函数，才能够被声明成static。
+- 还有一类`静态只读数据成员`, 可以在声明的时候为其明确指定初值
+```c++
+static const int _buff_size = 1024;
+```
 
-> 一般情况下，成员函数需要通过类的某个对象来调用。调用时，这个对象会被绑定至该成员函数的this指针。
+
+#### 静态成员函数
+- 不访问任何非静态数据成员的成员函数，才能够被声明成static;
+- 静态成员函数只访问静态数据成员;
+
+**一般情况下，成员函数需要通过类的某个对象来调用。调用时，这个对象会被绑定至该成员函数的this指针。**
 
 - 但是，静态成员函数的工作和任何对象都没有关系，所以它内部是没有this指针的。在类定义完成后，既可以直接调用静态函数成员。只是调用时，需要在前面加上class scope。比如：
 ```c++
@@ -162,7 +186,7 @@ int main(){
 - 任何运算符如果和另一个运算符性质相反，比如`==`和`!=`，实现时，可以先实现`==`运算符的重载，然后再以它来实现`!=`。（具体见本节代码展示）
 
 - 重载运算符的定义方式，可以像定义成员函数一样来定义，也可以像非成员函数一样来定义。但是非成员函数定义方式的参数列表里面，一定要比成员函数定义方式多一个参数，也就是this指针。
-```
+```c++
 // 成员函数定义方式
 inline int Triangular_iterator::operator*() const {
     // ...
@@ -179,6 +203,7 @@ inline int operator*(const Triangular_iterator& rhs) {
 - `typedef`可以为某个类型设定另一个不同的名称；
 ```c++
 typedef existing_type new_name;
+
 // 在我们的例子中
 class Triangular{
 typedef Triangular_iterator itreator;
@@ -189,7 +214,25 @@ Triangular::itreator it = trian.begin();
 ```
 
 #### 友元函数
-- 想要类A中的成员函数访问类B中的私有数据成员的话，一种方式是将这个数据成员在类B中声明为 friend 。
+- 想要类A中的成员函数访问类B中的私有数据成员的话，一种方式是将这个成员函数在类B中声明为 friend ;
+```c++
+class A{
+    int find_b(){
+        // 访问类B中的私有数据成员
+        int data = _data_b
+    }
+}
+
+class B{
+    // 首先将A类中的函数声明为友元
+    friend int A::find_b();
+
+    private:
+    int _data_b;
+}
+```
+> 其实可以理解为在B中建立一个名单,名单中的外界成员函数可以访问我们的私有数据成员.
+
 - 如果A和B的定义不在同一个头文件中，那么需要在B中对A进行超前声明。就是在B所在文件的顶部写下`class A`；
 - 这个friend声明可以出现在类B定义中的任何位置，不受public和private影响；
 
@@ -236,6 +279,7 @@ Matrix& Matrix::operator=(const Matrix &rhs){
 - function call运算符可以接受任意多个参数。这样可以被用来作为Matrix的多维度下标操作。（因为c++下面的下标操作只能够接受一个参数）
 - 标准库定义了 算术、关系、逻辑三类function object。
 - 需要包含 functional 头文件。
+
 
 ### 重载iostream运算符
 - 目的在于想要对某一个class object进行读取与写入操作；
