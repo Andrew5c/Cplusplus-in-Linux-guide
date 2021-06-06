@@ -272,6 +272,7 @@ Matrix& Matrix::operator=(const Matrix &rhs){
 ```
 
 ### 实现一个function object（[本节代码展示](../code/essential/functionCall.cpp)）
+在程序中看到 `fun()` 的时候, fun可能是函数名称,也可能是函数指针,更可能是函数对象.
 
 > function object是某种class的实例对象，并且这类class对function call运算符做了重载。这样，可以将function object 作为一般函数使用。
 
@@ -299,7 +300,7 @@ ostream& operator<< (ostream &os, const Triangular &rhs){
     return os;
 }
 ```
-- 这里重载函数传入的ostream又被返回，是为了能够串接多个output运算符。
+- 这里运算符重载函数传入的ostream又被返回，是为了能够串接多个output运算符。
 - 之所以使用非成员函数的形式实现，是为了避免造成困惑。因为如果设计成成员函数的话，`<<`运算符的左操作数必须是属于同一个类的对象才行，这时，输出一个类可能需要这样写：`trian << cout << '\n';`，会造成困惑。
 
 
@@ -308,17 +309,21 @@ ostream& operator<< (ostream &os, const Triangular &rhs){
 - 直观印象
 ```c++
 class num_sequence{
+    void fun_test(int a);
     // ...
 };
 // 定义一个指向上述类的成员函数的指针
 // 注意需要指明它所指的是哪一个类
 void (num_sequence::*pt) (int ) = 0;
 ```
-- 上面这段代码定义了 num_sequence 类的一个成员函数指针，该函数的返回值为void，接受一个int型参数， 并且初始化pt的值为0.
+- 上面这段代码定义了 num_sequence 类的一个成员函数指针，该函数的返回值为void，接受一个int型参数， 并且初始化pt的值为0,也就是目前不指向任何成员函数
 
 - 通过 typedef 简化上述定义: 
 ```c++
 typedef void (num_sequence::*PtrType) (int);
 PtrType pt = 0;
+// 另该成员函数指针指向 类的成员函数 
+pt = &num_sequence::fun_test;
 ```
+注意,只需要函数名即可.
 

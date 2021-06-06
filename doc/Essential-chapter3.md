@@ -95,14 +95,16 @@ int countOccurs(const vector<int> &vec, int num) {
 
 
 #### 函数对象(function object)
+- 有点类似于函数指针的作用
 - 是某种class的实例对象,这类class对函数调用运算符进行了重载,这样,就可以将这个函数对象当成一般函数来使用.
 - 目的: 将某一种**行为**传递给函数,而不是传统的参数.
 - 为了效率考虑. 因为这个运算符重载可以以inline的方式给出,从而消除通过函数指针来调用的代价.
 - STL中定义了一组function object, 分别是
     - 算术运算, plus<type>, minus<type>...
     - 关系运算, less<type>, great<type>...
-    - 逻辑运算, logical)and<type>, logical_or<type>...
+    - 逻辑运算, logical_and<type>, logical_or<type>...
 ```c++
+// 将两个vector中的元素顺序相加,放到第三个vector中
 void callFunctional(vector<int> &vec_sum) {
     vector<int> vec_a(3, 1);
     vector<int> vec_b(3, 2);
